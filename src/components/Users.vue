@@ -15,9 +15,11 @@
             </tr>
         </thead>
         <tbody>
-            <user 
-            v-for="fake in getFakeData"
-            :key="fake.id"/>
+            <User 
+            v-for="fake in allFakeData"
+            :key="fake.id"
+            :fake="fake"
+            />
         </tbody>
     </table>
 </div>    
@@ -25,17 +27,16 @@
 
 <script>
 import User from './User.vue'
-import {mapGetters} from "vuex"
+import {mapGetters, mapActions} from "vuex"
 export default {
     components: {
     User
   },
-//   computed: {
-//       getFakeData(){
-//           return this.$store.getters.allFakeData
-//       }
-//   }
-    computed: mapGetters(["allFakeData"])
+    computed: mapGetters(["allFakeData"]),
+    methods: mapActions(["fetchFakeData"]),
+    async mounted() {
+        this.fetchFakeData()
+    }
 }
 </script>
 
