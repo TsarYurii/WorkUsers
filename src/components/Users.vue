@@ -1,7 +1,7 @@
 <template>
 <div class="container">
     <div class="d-flex justify-content-between">
-        <input type="text" placeholder="Search">
+        <input type="text" placeholder="Search" v-model="search">
         <button class="btn btn-warning">New user</button>
     </div>    
     <table class="table table-striped mt-5">
@@ -32,8 +32,8 @@ export default {
     components: {
     User
   },
-    computed: mapGetters(["allFakeData"]),
-    methods: mapActions(["fetchFakeData"]),
+    computed: mapGetters(["allFakeData", "search"]),
+    methods: mapActions(["fetchFakeData", "filteredList"]),
     async mounted() {
         this.fetchFakeData()
     }
