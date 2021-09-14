@@ -4,7 +4,12 @@ export default new Vuex.Store({
     state: {
         fakeData: [],
         search: "",
-        isShowModal: false
+        isShowModal: false,
+        newUserName: "",
+        newUserEmail: "",
+        newUserStreet: "",
+        newUserCity: "",
+        newUserZip: ""
     },
     mutations: {
         updateFakeData(state, data) {
@@ -40,6 +45,9 @@ export default new Vuex.Store({
         },
         showModal(context){
             context.commit("changeShowModal")
+        },
+        addNewUser(){
+            
         }
     }
 })
