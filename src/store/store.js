@@ -46,8 +46,11 @@ export default new Vuex.Store({
         showModal(context){
             context.commit("changeShowModal")
         },
-        addNewUser(){
-            
-        }
+        // addNewUser(){
+        //     const newUser = {
+        //         name: "",
+
+        //     }
+        // }
     }
 })
