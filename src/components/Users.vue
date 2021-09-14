@@ -2,7 +2,7 @@
 <div class="container">
     <div class="d-flex justify-content-between">
         <input type="text" placeholder="Search" v-model="this.$store.search" @input="filterSearch">
-        <button class="btn btn-warning">New user</button>
+        <button class="btn btn-warning" @click="showModal">New user</button>
     </div>    
     <table class="table table-striped mt-5">
         <thead>
@@ -22,18 +22,23 @@
             />
         </tbody>
     </table>
+    <NewUser
+        v-if="changedShowModal === true"
+    />
 </div>    
 </template>
 
 <script>
 import User from './User.vue'
+import NewUser from "./NewUser.vue"
 import {mapGetters, mapActions} from "vuex"
 export default {
     components: {
-    User
+    User,
+    NewUser
   },
-    computed: mapGetters(["allFakeData"]),
-    methods: mapActions(["fetchFakeData", "filterSearch", "changeSearch"]),
+    computed: mapGetters(["allFakeData", "changedShowModal"]),
+    methods: mapActions(["fetchFakeData", "filterSearch", "changeSearch", "showModal"]),
     async mounted() {
         this.fetchFakeData()
     }

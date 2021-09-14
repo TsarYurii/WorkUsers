@@ -3,7 +3,8 @@ import Vuex from "vuex"
 export default new Vuex.Store({
     state: {
         fakeData: [],
-        search: ""
+        search: "",
+        isShowModal: false
     },
     mutations: {
         updateFakeData(state, data) {
@@ -11,11 +12,17 @@ export default new Vuex.Store({
         },
         usersFilter(state, filteredData){
             state.fakeData = filteredData
+        },
+        changeShowModal(state){
+            state.isShowModal = !state.isShowModal
         }
     },
     getters: {
         allFakeData(state){
             return state.fakeData
+        },
+        changedShowModal(state){
+            return state.isShowModal
         }
     },
     actions: {
@@ -30,6 +37,9 @@ export default new Vuex.Store({
                     return fake.name.toLowerCase().includes(this.search.toLowerCase())
                 })
                 context.commit("usersFilter", filteredData)
+        },
+        showModal(context){
+            context.commit("changeShowModal")
         }
     }
 })
