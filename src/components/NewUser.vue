@@ -30,24 +30,24 @@
           <section class="simple-modal-body">
             <form>
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Name">
+                <input type="text" class="form-control" placeholder="Name" @input="changeNewUserName">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Email">
+                <input type="text" class="form-control" placeholder="Email" @input="changeNewUserEmail">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Street">
+                <input type="text" class="form-control" placeholder="Street" @input="changeNewUserStreet">
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="City">
+                <input type="text" class="form-control" placeholder="City" @input="changeNewUserCity"> 
             </div>
             <div class="mb-3">
-                <input type="text" class="form-control" placeholder="Zip">
+                <input type="text" class="form-control" placeholder="Zip" @input="changeNewUserZip">
             </div>
         </form>
           </section>
           <footer class="simple-modal-footer">
-            <button type="buttom" class="btn btn-primary">Add User</button>
+            <button type="buttom" class="btn btn-primary" @click="addNewUser">Add User</button>
             <button type="button" class="btn btn-danger mt-3" @click="showModal">Close</button>
           </footer>
         </div>
@@ -60,7 +60,7 @@
 import {mapActions} from "vuex"
 export default {
     name: "NewUser",
-    methods: mapActions(["showModal"])
+    methods: mapActions(["showModal", "changeNewUserName", "changeNewUserEmail", "changeNewUserStreet", "changeNewUserCity", "changeNewUserZip", "addNewUser"])
 }
 </script>
 

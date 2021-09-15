@@ -1,7 +1,7 @@
 <template>
 <div class="container">
     <div class="d-flex justify-content-between">
-        <input type="text" placeholder="Search" v-model="this.$store.search" @input="filterSearch">
+        <input type="text" placeholder="Search" @input="filterSearch">
         <button class="btn btn-warning" @click="showModal">New user</button>
     </div>    
     <table class="table table-striped mt-5">
@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             <User 
-            v-for="fake in allFakeData"
+            v-for="fake in allFilteredData"
             :key="fake.id"
             :fake="fake"
             />
@@ -37,7 +37,7 @@ export default {
     User,
     NewUser
   },
-    computed: mapGetters(["allFakeData", "changedShowModal"]),
+    computed: mapGetters(["allFakeData", "changedShowModal", "allFilteredData"]),
     methods: mapActions(["fetchFakeData", "filterSearch", "changeSearch", "showModal"]),
     async mounted() {
         this.fetchFakeData()
