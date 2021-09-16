@@ -1,3 +1,4 @@
+import axios from "axios";
 import Vuex from "vuex"
 
 export default new Vuex.Store({
@@ -91,11 +92,18 @@ export default new Vuex.Store({
             return state.searchBy
         }
     },
+
+    
+
     actions: {
        async fetchFakeData(context) {
-            const res = await fetch("https://jsonplaceholder.typicode.com/posts/1/comments");
-            const data = await res.json();
-            context.commit("updateFakeData", data)
+            // const res = await fetch("https://jsonplaceholder.typicode.com/posts/1/comments");
+            // const data = await res.json();
+            axios.get("https://my-json-server.typicode.com/TsarYurii/JsonServer/db").then((response) => {
+                const data = response.data.users
+                context.commit("updateFakeData", data)
+            })
+            // context.commit("updateFakeData", data)
         },
         filterSearch(context, event){
                 const newSearchValue = event.target.value

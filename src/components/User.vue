@@ -2,9 +2,9 @@
     <tr>
         <td>{{fake.name}}</td>
         <td>{{fake.email}}</td>
-        <td>Street</td>
-        <td>City</td>
-        <td>zip</td>
+        <td>{{fake.street}}</td>
+        <td>{{fake.city}}</td>
+        <td>{{fake.zip}}</td>
     </tr>
 </template>
 
