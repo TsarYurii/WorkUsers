@@ -1,7 +1,10 @@
 <template>
 <div class="container">
     <div class="d-flex justify-content-between">
-        <input type="text" placeholder="Search" @input="filterSearch">
+        <div>
+            <input class="p-1 me-1" type="text" placeholder="Search" @input="filterSearch">
+            <button class="btn btn-warning" @click="changeSearchBy">{{searchBy}}</button>
+        </div>
         <button class="btn btn-warning" @click="showModal">New user</button>
     </div>    
     <table class="table table-striped mt-5">
@@ -37,8 +40,8 @@ export default {
     User,
     NewUser
   },
-    computed: mapGetters(["allFakeData", "changedShowModal", "allFilteredData"]),
-    methods: mapActions(["fetchFakeData", "filterSearch", "changeSearch", "showModal"]),
+    computed: mapGetters(["allFakeData", "changedShowModal", "allFilteredData", "searchBy"]),
+    methods: mapActions(["fetchFakeData", "filterSearch", "changeSearch", "showModal", "changeSearchBy"]),
     async mounted() {
         this.fetchFakeData()
     }

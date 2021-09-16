@@ -14,6 +14,7 @@ export default new Vuex.Store({
             zip: "",
             id: ""
         },
+        searchBy : "by Name",
         page: 1,
         totalPages: 0
     },
@@ -24,12 +25,15 @@ export default new Vuex.Store({
         },
         usersFilter(state, newSearchValue){
             state.search = newSearchValue
-            state.filteredData = state.fakeData.filter(data => {
-                return data.name.toLowerCase().includes(state.search.toLowerCase())
-            })
-            state.filteredData = state.fakeData.filter(data => {
-                return data.email.toLowerCase().includes(state.search.toLowerCase())
-            })
+            if(state.searchBy === "by Name"){
+                state.filteredData = state.fakeData.filter(data => {
+                    return data.name.toLowerCase().includes(state.search.toLowerCase())
+                })
+            }else if(state.searchBy === "by Email"){
+                state.filteredData = state.fakeData.filter(data => {
+                    return data.email.toLowerCase().includes(state.search.toLowerCase())
+                })
+            }            
         },
         changeShowModal(state){
             state.isShowModal = !state.isShowModal
@@ -63,6 +67,14 @@ export default new Vuex.Store({
             state.newUser.city = ""
             state.newUser.zip = ""
             state.newUser.id = ""
+        },
+        updateSearchBy(state){
+            if(state.searchBy === "by Name"){
+                state.searchBy = "by Email"
+            }
+            else if(state.searchBy === "by Email"){
+                state.searchBy = "by Name"
+            }
         }
     },
     getters: {
@@ -75,9 +87,9 @@ export default new Vuex.Store({
         changedShowModal(state){
             return state.isShowModal
         },
-        // getNewUser(state){
-        //     return state.newUser
-        // }
+        searchBy(state){
+            return state.searchBy
+        }
     },
     actions: {
        async fetchFakeData(context) {
@@ -128,6 +140,9 @@ export default new Vuex.Store({
                 context.commit("resetNewUser")
                 context.commit("updateNewUserId",  NewUser)
             }
+        },
+        changeSearchBy(context){
+            context.commit("updateSearchBy")
         }
     }
 })
