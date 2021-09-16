@@ -13,13 +13,14 @@ export default new Vuex.Store({
             city: "",
             zip: "",
             id: ""
-        },
-        page: 1,
-        totalPages: 0
+        }
     },
     mutations: {
         updateFakeData(state, data) {
             state.fakeData = data;
+            state.filteredData = state.fakeData
+        },
+        updateFilteredData(state){
             state.filteredData = state.fakeData
         },
         usersFilter(state, newSearchValue){
@@ -49,12 +50,11 @@ export default new Vuex.Store({
         updateNewUserZip(state, newUserZip){
             state.newUser.zip = newUserZip
         },
-        updateNewUserId(state, NewUser){
-            state.newUser.id = state.filteredData.length
-            NewUser.id = state.newUser.id
+        updateNewUserId(state){
+            state.newUser.id = state.filteredData.length + 1
         },
-        pushNewUser(state, NewUser){
-            state.fakeData.push(NewUser)
+        pushNewUser(state){
+            state.filteredData.push(state.newUser)
         },
         resetNewUser(state){
             state.newUser.name = ""
@@ -114,20 +114,10 @@ export default new Vuex.Store({
             context.commit("updateNewUserZip", newUserZip)
         },
         addNewUser(context){
-            const NewUser = {
-                name: this.state.newUser.name,
-                email: this.state.newUser.email,
-                street: this.state.newUser.street,
-                city: this.state.newUser.city,
-                zip: this.state.newUser.zip,
-                id: this.state.newUser.id
-            }
-            if(this.state.newUser.name !== ""){
-                context.commit("pushNewUser", NewUser)
-                context.commit("changeShowModal")
-                context.commit("resetNewUser")
-                context.commit("updateNewUserId",  NewUser)
-            }
+            context.commit("pushNewUser")
+            context.commit("changeShowModal")
+            // context.commit("resetNewUser")
+            context.commit("updateNewUserId")
         }
     }
 })
