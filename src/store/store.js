@@ -93,6 +93,11 @@ export default new Vuex.Store({
 
         mutPaginatedData(state, start, end){
             return state.currentPage.slice(start, end)
+        },
+        mutStartPage(state){
+            if(state.currentPage === 1){
+                return 1
+            }
         }
     },
     getters: {
@@ -174,13 +179,13 @@ export default new Vuex.Store({
 
 
 
-        paginatedData(context){
+        actPaginatedData(context){
             let start = (this.state.currentPage - 1) * this.state.perPage
             let end = start + this.state.perPage
             context.commit("mutPaginatedData", start, end)
         },
-        // startPage(context){
-
-        // }
+        actStartPage(context){
+            context.commit()
+        }
     }
 })
