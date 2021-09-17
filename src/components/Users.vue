@@ -28,17 +28,20 @@
     <NewUser
         v-if="changedShowModal === true"
     />
+    <Pagination/>
 </div>    
 </template>
 
 <script>
 import User from './User.vue'
 import NewUser from "./NewUser.vue"
+import Pagination from "./Pagination.vue"
 import {mapGetters, mapActions} from "vuex"
 export default {
     components: {
     User,
-    NewUser
+    NewUser,
+    Pagination
   },
     computed: mapGetters(["allFakeData", "changedShowModal", "allFilteredData", "searchBy"]),
     methods: mapActions(["fetchFakeData", "filterSearch", "changeSearch", "showModal", "changeSearchBy"]),

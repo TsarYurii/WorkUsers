@@ -16,8 +16,16 @@ export default new Vuex.Store({
             id: ""
         },
         searchBy : "by Name",
-        page: 1,
-        totalPages: 0
+
+
+
+
+        currentPage: 1,
+        totalPages: 0,
+        maxVisibleButtons: 3,
+        total: 0,
+        perPage: 0,
+
     },
     mutations: {
         updateFakeData(state, data) {
@@ -60,6 +68,7 @@ export default new Vuex.Store({
         },
         pushNewUser(state, NewUser){
             state.fakeData.push(NewUser)
+            state.filteredData = state.fakeData
         },
         resetNewUser(state){
             state.newUser.name = ""
@@ -76,6 +85,14 @@ export default new Vuex.Store({
             else if(state.searchBy === "by Email"){
                 state.searchBy = "by Name"
             }
+        },
+        
+
+
+
+
+        mutPaginatedData(state, start, end){
+            return state.currentPage.slice(start, end)
         }
     },
     getters: {
@@ -103,7 +120,7 @@ export default new Vuex.Store({
                 const data = response.data.users
                 context.commit("updateFakeData", data)
             })
-            // context.commit("updateFakeData", data)
+            
         },
         filterSearch(context, event){
                 const newSearchValue = event.target.value
@@ -151,6 +168,19 @@ export default new Vuex.Store({
         },
         changeSearchBy(context){
             context.commit("updateSearchBy")
-        }
+        },
+
+
+
+
+
+        paginatedData(context){
+            let start = (this.state.currentPage - 1) * this.state.perPage
+            let end = start + this.state.perPage
+            context.commit("mutPaginatedData", start, end)
+        },
+        // startPage(context){
+
+        // }
     }
 })
