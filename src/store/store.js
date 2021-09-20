@@ -18,13 +18,10 @@ export default new Vuex.Store({
         searchBy : "by Name",
 
 
-
-
-        currentPage: 1,
-        totalPages: 0,
-        maxVisibleButtons: 3,
-        total: 0,
-        perPage: 0,
+        // pages: 1,
+        usersPerPage: 10,
+        paginatedUsers: [],
+        pageNumber: 1
 
     },
     mutations: {
@@ -87,17 +84,14 @@ export default new Vuex.Store({
             }
         },
         
+        
 
 
 
 
-        mutPaginatedData(state, start, end){
-            return state.currentPage.slice(start, end)
-        },
-        mutStartPage(state){
-            if(state.currentPage === 1){
-                return 1
-            }
+        
+        mutPageNumber(state, page){
+            state.pageNumber = page
         }
     },
     getters: {
@@ -112,6 +106,19 @@ export default new Vuex.Store({
         },
         searchBy(state){
             return state.searchBy
+        },
+
+
+        getPages(state){
+            return Math.ceil(state.filteredData.length / 10)
+        },
+        getPaginatedUsers(state){
+            let from = (state.pageNumber - 1) * state.usersPerPage
+            let to = from + state.usersPerPage
+           return state.paginatedUsers = state.filteredData.slice(from, to)
+        },
+        getPageNumber(state){
+            return state.pageNumber
         }
     },
 
@@ -177,15 +184,10 @@ export default new Vuex.Store({
 
 
 
-
-
-        actPaginatedData(context){
-            let start = (this.state.currentPage - 1) * this.state.perPage
-            let end = start + this.state.perPage
-            context.commit("mutPaginatedData", start, end)
-        },
-        actStartPage(context){
-            context.commit()
+        
+        onClickPage(context, page){
+            context.commit("mutPageNumber", page)
         }
+        
     }
 })

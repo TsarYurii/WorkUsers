@@ -33,8 +33,8 @@
           </button>
         </li>
     </ul> -->
-      <ul class="pagination" v-if="allFilteredData.length > 5 || $store.state.currentPage > 1">
-        <li class="page-item" title="Первая страница">
+      <ul class="pagination" v-if="allFilteredData.length > 10">
+        <!-- <li class="page-item" title="Первая страница">
           <button type="button" class="page-link" @click="onClickFirstPage">
            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-double-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
@@ -49,19 +49,19 @@
                 <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
             </svg>
           </button>
-        </li>
+        </li> -->
 
-        <li class="page-item">
+        <li class="page-item" v-for="page in getPages" :page="page" :key="page">
           <button 
           type="button"
           class="page-link"
-          @click="onClickPage"
+          @click="onClickPage(page)"
           >
-            номер страницы
+            {{page}}
           </button>
         </li>
 
-        <li class="page-item" title="Следующая страница">
+        <!-- <li class="page-item" title="Следующая страница">
           <button type="button" class="page-link" @click="onClickNextPage">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
@@ -75,7 +75,7 @@
                 <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
             </svg>
           </button>
-        </li>
+        </li> -->
       </ul>
 </template>
 
@@ -83,8 +83,9 @@
 import {mapGetters, mapActions} from "vuex"
 export default {
     name: "Pagination",
-    computed: mapGetters(["allFilteredData"]),
-    methods: mapActions([])
+    computed: mapGetters(["allFilteredData", "getPages"]),
+    methods: {...mapActions(["onClickPage"])
+    }
 }
 </script>
 
