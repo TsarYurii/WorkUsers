@@ -16,14 +16,13 @@
                         </svg>
                     </button>
                 </th>
-                <th><button class="btn fw-bold" @click="sortByEmail">Email 
+                <th>Email</th>
+                <th>Street</th>
+                <th><button class="btn fw-bold" @click="sortByCity">City 
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-expand" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M3.646 9.146a.5.5 0 0 1 .708 0L8 12.793l3.646-3.647a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 0-.708zm0-2.292a.5.5 0 0 0 .708 0L8 3.207l3.646 3.647a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 0 0 0 .708z"/>
                         </svg>
-                    </button>
-                </th>
-                <th>Street</th>
-                <th>City</th>
+                    </button></th>
                 <th>Zip</th>
             </tr>
         </thead>
@@ -55,7 +54,7 @@ export default {
   },
     computed: {...mapGetters(["allFakeData", "changedShowModal", "allFilteredData", "searchBy", "getPaginatedUsers"])
     },
-    methods: {...mapActions(["fetchFakeData", "filterSearch", "showModal", "changeSearchBy", "actPages", "sortByName", "sortByEmail"])
+    methods: {...mapActions(["fetchFakeData", "filterSearch", "showModal", "changeSearchBy", "actPages", "sortByName", "sortByCity"])
     },
     async mounted() {
         this.fetchFakeData()
