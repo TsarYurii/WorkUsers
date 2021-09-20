@@ -114,8 +114,6 @@ export default new Vuex.Store({
 
     actions: {
        async fetchFakeData(context) {
-            // const res = await fetch("https://jsonplaceholder.typicode.com/posts/1/comments");
-            // const data = await res.json();
             axios.get("https://my-json-server.typicode.com/TsarYurii/JsonServer/db").then((response) => {
                 const data = response.data.users
                 context.commit("updateFakeData", data)
