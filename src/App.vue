@@ -3,7 +3,6 @@
 </template>
 
 <script>
-// import NewUser from './components/NewUser.vue'
 import Users from "./components/Users.vue"
 export default {
   name: 'App',
