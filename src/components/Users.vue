@@ -38,32 +38,14 @@ import NewUser from "./NewUser.vue"
 import Pagination from "./Pagination.vue"
 import {mapGetters, mapActions} from "vuex"
 export default {
-    // data(){
-    //     return {
-    //         usersPerPage: 10,
-    //         pageNumber: 1
-    //     }
-        
-    // },
     components: {
     User,
     NewUser,
     Pagination
   },
-    computed: {...mapGetters(["allFakeData", "changedShowModal", "allFilteredData", "searchBy", "getPaginatedUsers"]),
-        // pages(){
-        //     return Math.ceil(this.allFilteredData.length / 10)
-        // },
-        // paginatedUsers(){
-        //     let from = (this.pageNumber - 1) * this.usersPerPage
-        //     let to = from + this.usersPerPage
-        //     return this.allFilteredData.slice(from, to)
-        // }
+    computed: {...mapGetters(["allFakeData", "changedShowModal", "allFilteredData", "searchBy", "getPaginatedUsers"])
     },
     methods: {...mapActions(["fetchFakeData", "filterSearch", "showModal", "changeSearchBy", "actPages"])
-        // onClickPage(page){
-        //     this.pageNumber = page
-        // }
     },
     async mounted() {
         this.fetchFakeData()

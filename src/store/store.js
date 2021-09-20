@@ -16,9 +16,6 @@ export default new Vuex.Store({
             id: ""
         },
         searchBy : "by Name",
-
-
-        // pages: 1,
         usersPerPage: 10,
         paginatedUsers: [],
         pageNumber: 1
@@ -83,13 +80,6 @@ export default new Vuex.Store({
                 state.searchBy = "by Name"
             }
         },
-        
-        
-
-
-
-
-        
         mutPageNumber(state, page){
             state.pageNumber = page
         }
@@ -107,8 +97,6 @@ export default new Vuex.Store({
         searchBy(state){
             return state.searchBy
         },
-
-
         getPages(state){
             return Math.ceil(state.filteredData.length / 10)
         },
@@ -181,13 +169,8 @@ export default new Vuex.Store({
         changeSearchBy(context){
             context.commit("updateSearchBy")
         },
-
-
-
-        
         onClickPage(context, page){
             context.commit("mutPageNumber", page)
         }
-        
     }
 })
