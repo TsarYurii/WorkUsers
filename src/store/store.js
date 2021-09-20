@@ -82,6 +82,12 @@ export default new Vuex.Store({
         },
         mutPageNumber(state, page){
             state.pageNumber = page
+        },
+        mutSortByName(state){
+            state.filteredData.sort((a,b) => a.name.localeCompare(b.name))
+        },
+        mutSortByEmail(state){
+            state.filteredData.sort((a,b) => a.email.localeCompare(b.email))
         }
     },
     getters: {
@@ -157,7 +163,7 @@ export default new Vuex.Store({
                 zip: this.state.newUser.zip,
                 id: this.state.newUser.id
             }
-            if(this.state.newUser.name !== ""){
+            if(this.state.newUser.name !== "" && this.state.newUser.email !== ""){
                 context.commit("pushNewUser", NewUser)
                 context.commit("changeShowModal")
                 context.commit("resetNewUser")
@@ -169,6 +175,12 @@ export default new Vuex.Store({
         },
         onClickPage(context, page){
             context.commit("mutPageNumber", page)
+        },
+        sortByName(context){
+            context.commit("mutSortByName")
+        },
+        sortByEmail(context){
+            context.commit("mutSortByEmail")
         }
     }
 })
