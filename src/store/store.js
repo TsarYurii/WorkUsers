@@ -104,7 +104,7 @@ export default new Vuex.Store({
             return state.searchBy
         },
         getPages(state){
-            return Math.ceil(state.filteredData.length / 10)
+            return Math.ceil(state.filteredData.length / state.usersPerPage)
         },
         getPaginatedUsers(state){
             let from = (state.pageNumber - 1) * state.usersPerPage
