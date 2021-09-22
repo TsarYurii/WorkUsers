@@ -17,18 +17,6 @@ export default new Vuex.Store({
             state.fakeData = data;
             state.filteredData = state.fakeData
         },
-        usersFilter(state, newSearchValue) {
-            state.search = newSearchValue
-            if (state.searchBy === "by Name") {
-                state.filteredData = state.fakeData.filter(data => {
-                    return data.name.toLowerCase().includes(state.search.toLowerCase())
-                })
-            } else if (state.searchBy === "by Email") {
-                state.filteredData = state.fakeData.filter(data => {
-                    return data.email.toLowerCase().includes(state.search.toLowerCase())
-                })
-            }
-        },
         changeShowModal(state) {
             state.isShowModal = !state.isShowModal
         },
@@ -81,7 +69,8 @@ export default new Vuex.Store({
         getSortByCityReverse(state) {
             state.filteredData.sort((a, b) => a.city.localeCompare(b.city)).reverse()
         },
-        getUsersFilter(state, search) {
+        getUsersFilter: (state) => (search) => {
+            state.pageNumber = 1
             if (state.searchBy === "by Name") {
                 state.filteredData = state.fakeData.filter(data => {
                     return data.name.toLowerCase().includes(search.toLowerCase())
@@ -102,10 +91,6 @@ export default new Vuex.Store({
                 const data = response.data.users
                 context.commit("updateFakeData", data)
             })
-        },
-        filterSearch(context, event) {
-            const newSearchValue = event.target.value
-            context.commit("usersFilter", newSearchValue)
         },
         showModal(context) {
             context.commit("changeShowModal")

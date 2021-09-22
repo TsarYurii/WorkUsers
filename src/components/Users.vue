@@ -6,7 +6,7 @@
           class="p-1 me-1"
           type="text"
           placeholder="Search"
-          @input="filterSearch"
+          @input="getUsersFilter($event.target.value)"
         />
         <button class="btn btn-warning" @click="changeSearchBy">
           {{ searchBy }}
@@ -99,7 +99,6 @@ export default {
   methods: {
     ...mapActions([
       "fetchFakeData",
-      "filterSearch",
       "showModal",
       "changeSearchBy",
       "sortByName",
