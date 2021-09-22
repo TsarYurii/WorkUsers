@@ -34,6 +34,9 @@ export default new Vuex.Store({
         mutPageNumber(state, page) {
             state.pageNumber = page
         },
+        mutEditUser(state, editedUser, fake){
+            state.fakeData.splice(fake, 1, editedUser)
+        }
     },
     getters: {
         allFilteredData(state) {
@@ -103,6 +106,9 @@ export default new Vuex.Store({
         },
         onClickPage(context, page) {
             context.commit("mutPageNumber", page)
+        },
+        letEditUser(context, editedUser, fake){
+            context.commit("mutEditUser", editedUser, fake)
         }
     }
 })

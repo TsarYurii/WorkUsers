@@ -1,16 +1,36 @@
 <template>
-  <tr>
+  <tr class="user" @dblclick="onEditUser" v-if="edit === false">
     <td>{{ fake.name }}</td>
     <td>{{ fake.email }}</td>
     <td>{{ fake.street }}</td>
     <td>{{ fake.city }}</td>
     <td>{{ fake.zip }}</td>
   </tr>
+  <tr v-else-if="edit === true">
+    <td><input type="text" :placeholder="fake.name" v-model="name" /></td>
+    <td><input type="text" :placeholder="fake.email" v-model="email"/></td>
+    <td><input type="text" :placeholder="fake.street" v-model="street"/></td>
+    <td><input type="text" :placeholder="fake.city" v-model="city"/></td>
+    <td><input type="text" :placeholder="fake.zip" v-model="zip"/></td>
+    <button class="btn" @click="offEditUser">asdd</button>
+  </tr>
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
   name: "User",
+  data() {
+    return {
+      edit: false,
+      name: "",
+      email: "",
+      street: "",
+      city: "",
+      zip: ""
+
+    };
+  },
   props: {
     fake: {
       type: Object,
@@ -19,8 +39,32 @@ export default {
       },
     },
   },
+  methods: {
+    ...mapActions(["letEditUser"]),
+    onEditUser() {
+      console.log("Edit this!!!");
+      this.edit = !this.edit;
+    },
+    offEditUser() {
+      let editedUser = {
+        name: (this.name !== "" ? this.name : this.fake.name),
+        email: (this.email !== "" ? this.email : this.fake.email),
+        street: (this.street !== "" ? this.street : this.fake.street),
+        city: (this.city !== "" ? this.city : this.fake.city),
+        zip: (this.zip !== "" ? this.zip : this.fake.zip),
+        id: (this.id !== "" ? this.id : this.fake.id)
+      }
+      this.letEditUser(editedUser, this.fake)
+      this.edit = !this.edit;
+    },
+  },
 };
 </script>
 
 <style>
+.user:hover {
+  background-color: #e6ffec;
+  cursor: pointer;
+  transition-duration: 0.35s;
+}
 </style>
