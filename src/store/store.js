@@ -5,7 +5,7 @@ export default new Vuex.Store({
     state: {
         fakeData: [],
         filteredData: [],
-        // search: "",
+        search: "",
         isShowModal: false,
         searchBy: "by Name",
         usersPerPage: 10,
