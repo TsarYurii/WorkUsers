@@ -5,7 +5,6 @@ export default new Vuex.Store({
     state: {
         fakeData: [],
         filteredData: [],
-        search: "",
         isShowModal: false,
         searchBy: "by Name",
         usersPerPage: 10,
@@ -82,7 +81,7 @@ export default new Vuex.Store({
             }
         }
     },
-
+// TODO Поиск строки, функция, почитать
 
 
     actions: {
