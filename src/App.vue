@@ -1,15 +1,15 @@
 <template>
-  <users/>
+    <users />
 </template>
 
 <script>
-import Users from "./components/Users.vue"
+import Users from "./components/Users.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Users
-  }
-}
+    Users,
+  },
+};
 </script>
 
 <style>
