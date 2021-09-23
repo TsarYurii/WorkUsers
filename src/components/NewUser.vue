@@ -32,7 +32,7 @@
             </button>
           </header>
           <section class="simple-modal-body">
-            <form @submit.prevent="onSubmitForm">
+            <!-- <form @submit.prevent="onSubmitForm">
               <div class="mb-3">
                 <input
                   required
@@ -79,7 +79,8 @@
                 />
               </div>
               <input class="btn btn-primary" type="submit" value="Add User" />
-            </form>
+            </form> -->
+            <Form @onSubmitForm="onSubmitForm"/>
           </section>
         </div>
       </div>
@@ -89,26 +90,30 @@
 
 <script>
 import { mapActions, mapGetters } from "vuex";
+import Form from "./Form.vue"
 export default {
-  data() {
-    return {
-      name: "",
-      email: "",
-      street: "",
-      city: "",
-      zip: "",
-    };
+  components:{
+    Form
   },
+  // data() {
+  //   return {
+  //     name: "",
+  //     email: "",
+  //     street: "",
+  //     city: "",
+  //     zip: "",
+  //   };
+  // },
   name: "NewUser",
   methods: {
     ...mapActions(["showModal", "addNewUser"]),
-    onSubmitForm() {
-      let newUser = {
-        name: this.name,
-        email: this.email,
-        street: this.street,
-        city: this.city,
-        zip: this.zip,
+    onSubmitForm(data) {
+      const newUser = {
+        name: data.name,
+        email: data.email,
+        street: data.street,
+        city: data.city,
+        zip: data.zip,
         id: this.allFilteredData.length + 1,
       };
       this.addNewUser(newUser);

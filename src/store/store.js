@@ -90,8 +90,8 @@ export default new Vuex.Store({
             }
         },
         getUserIndex: (state) => (fake) => {
-           state.fakeIndex = state.filteredData.indexOf(fake)
-           console.log(state.fakeIndex)
+            state.fakeIndex = state.filteredData.indexOf(fake)
+            console.log(state.fakeIndex)
         }
     },
     // TODO Поиск строки, функция, почитать
