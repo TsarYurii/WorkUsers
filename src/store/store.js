@@ -9,7 +9,8 @@ export default new Vuex.Store({
         searchBy: "by Name",
         usersPerPage: 10,
         paginatedUsers: [],
-        pageNumber: 1
+        pageNumber: 1,
+        fakeIndex: ''
     },
     mutations: {
         updateFakeData(state, data) {
@@ -34,8 +35,13 @@ export default new Vuex.Store({
         mutPageNumber(state, page) {
             state.pageNumber = page
         },
-        mutEditUser(state, editedUser, fake){
-            state.fakeData.splice(fake, 1, editedUser)
+        mutEditUser(state, editedUser) {
+            state.filteredData.splice(state.fakeIndex, 1, editedUser)
+            state.fakeIndex = null
+
+            // console.log(state.filteredData.indexOf(fake))
+            // console.log("Mut editedUser: " + JSON.stringify(editedUser))
+            // console.log("Mut fake: " + JSON.stringify(fake))
         }
     },
     getters: {
@@ -82,9 +88,13 @@ export default new Vuex.Store({
                     return data.email.toLowerCase().includes(search.toLowerCase())
                 })
             }
+        },
+        getUserIndex: (state) => (fake) => {
+           state.fakeIndex = state.filteredData.indexOf(fake)
+           console.log(state.fakeIndex)
         }
     },
-// TODO Поиск строки, функция, почитать
+    // TODO Поиск строки, функция, почитать
 
 
     actions: {
@@ -107,8 +117,9 @@ export default new Vuex.Store({
         onClickPage(context, page) {
             context.commit("mutPageNumber", page)
         },
-        letEditUser(context, editedUser, fake){
-            context.commit("mutEditUser", editedUser, fake)
+        letEditUser(context, editedUser) {
+            // console.log("Action fake: " + fake)
+            context.commit("mutEditUser", editedUser)
         }
     }
 })
