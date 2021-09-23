@@ -18,8 +18,9 @@
     <td><input class="form-control" type="text" :placeholder="fake.zip" v-model="zip" /></td>
     <button class="btn" @click="offEditUser">asdd</button>
   </tr> -->
-  <div v-else-if="edit === true" class="container">
+  <div v-else-if="edit === true">
     <Form @onSubmitForm="onSubmitForm" />
+    <button class="btn btn-danger" @click="changeEdit">Close</button>
   </div>
 </template>
 
@@ -53,6 +54,9 @@ export default {
       console.log("Edit this!!!");
       console.log("onEditUser fake: " + JSON.stringify(this.fake));
       this.edit = !this.edit;
+    },
+    changeEdit(){
+      this.edit = !this.edit
     },
     // offEditUser() {
     //   const editedUser = {
