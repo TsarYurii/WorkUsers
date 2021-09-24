@@ -1,43 +1,39 @@
 <template>
   <tr
     class="user"
+    :class="{'user_selected' : showModal === true}"
     @dblclick="onEditUser(), getUserIndex(fake)"
-    v-if="edit === false"
   >
-    <td>{{ fake.name }}</td>
-    <td>{{ fake.email }}</td>
-    <td>{{ fake.street }}</td>
-    <td>{{ fake.city }}</td>
-    <td>{{ fake.zip }}</td>
+    <td class="align-middle">
+      <!-- <div class="me-3"><img class="avatarIcon" src="./avatarIcon.png" alt="SomePicture"/></div> -->
+      <DropZone/>
+    </td>
+    <td class="align-middle">{{ fake.name }}</td>
+    <td class="align-middle">{{ fake.email }}</td>
+    <td class="align-middle">{{ fake.street }}</td>
+    <td class="align-middle">{{ fake.city }}</td>
+    <td class="align-middle">{{ fake.zip }}</td>
   </tr>
-  <!-- <tr v-else-if="edit === true">
-    <td><input class="form-control" type="text" :placeholder="fake.name" v-model="name" /></td>
-    <td><input class="form-control" type="text" :placeholder="fake.email" v-model="email" /></td>
-    <td><input class="form-control" type="text" :placeholder="fake.street" v-model="street" /></td>
-    <td><input class="form-control" type="text" :placeholder="fake.city" v-model="city" /></td>
-    <td><input class="form-control" type="text" :placeholder="fake.zip" v-model="zip" /></td>
-    <button class="btn" @click="offEditUser">asdd</button>
-  </tr> -->
-  <div v-else-if="edit === true">
-    <Form @onSubmitForm="onSubmitForm" />
-    <button class="btn btn-danger" @click="changeEdit">Close</button>
+  <div v-if="showModal === true">
+      <FormModal @onSubmitForm="onSubmitForm" @close="close"/>
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import Form from "./Form.vue";
+import DropZone from './DropZone.vue'
+import FormModal from "./FormModal.vue"
+
 export default {
-  components: { Form },
   name: "User",
+  components: {
+    FormModal,
+    DropZone
+    // vueDropzone: vue2Dropzone
+    },
   data() {
     return {
-      edit: false,
-      // name: "",
-      // email: "",
-      // street: "",
-      // city: "",
-      // zip: "",
+      showModal: false,
     };
   },
   props: {
@@ -53,10 +49,10 @@ export default {
     onEditUser() {
       console.log("Edit this!!!");
       console.log("onEditUser fake: " + JSON.stringify(this.fake));
-      this.edit = !this.edit;
+      this.showModal = !this.showModal;
     },
-    changeEdit(){
-      this.edit = !this.edit
+    close() {
+      this.showModal = !this.showModal;
     },
     // offEditUser() {
     //   const editedUser = {
@@ -78,7 +74,7 @@ export default {
       };
 
       this.letEditUser(editedUser);
-      this.edit = !this.edit;
+      this.showModal = !this.showModal;
     },
   },
   computed: {
@@ -88,9 +84,17 @@ export default {
 </script>
 
 <style>
+
 .user:hover {
   background-color: #f9c009;
   cursor: pointer;
   transition-duration: 0.35s;
+}
+.user_selected{
+  background-color: #f9c009;
+}
+.avatarIcon{
+  max-height: 50px;
+  max-width: 50px;
 }
 </style>
