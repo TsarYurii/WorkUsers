@@ -15,9 +15,10 @@
       <button class="btn btn-warning" @click="showModal">New user</button>
     </div>
     <table class="table table-striped mt-5">
-      <!-- TODO: Возможность добавить аватар для пользователя -->
+      <!-- TODO: Возможность добавить аватар для пользователя с помощью Dropzone-->
       <thead>
         <tr>
+          <th></th>
           <th>
             <button class="btn fw-bold" @click="onSortByName">
               Name

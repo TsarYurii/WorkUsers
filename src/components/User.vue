@@ -1,12 +1,13 @@
 <template>
   <tr
     class="user"
-    :class="{'user_selected' : showModal === true}"
+    :class="{ user_selected: showModal === true }"
     @dblclick="onEditUser(), getUserIndex(fake)"
   >
     <td class="align-middle">
-      <!-- <div class="me-3"><img class="avatarIcon" src="./avatarIcon.png" alt="SomePicture"/></div> -->
-      <DropZone/>
+      <div class="me-3" @click="changeIcon"><img class="avatarIcon" src="./avatarIcon.png" alt="SomePicture"/></div>
+      <!-- <DropZone/> -->
+      <Dropzone2 v-if="showModalIcon === true"/>
     </td>
     <td class="align-middle">{{ fake.name }}</td>
     <td class="align-middle">{{ fake.email }}</td>
@@ -15,25 +16,27 @@
     <td class="align-middle">{{ fake.zip }}</td>
   </tr>
   <div v-if="showModal === true">
-      <FormModal @onSubmitForm="onSubmitForm" @close="close"/>
+    <FormModal @onSubmitForm="onSubmitForm" @close="close" />
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-import DropZone from './DropZone.vue'
-import FormModal from "./FormModal.vue"
+// import DropZone from './DropZone.vue'
+import FormModal from "./FormModal.vue";
+import Dropzone2 from "./Dropzone2.vue";
 
 export default {
   name: "User",
   components: {
     FormModal,
-    DropZone
-    // vueDropzone: vue2Dropzone
-    },
+    // DropZone,
+    Dropzone2,
+  },
   data() {
     return {
       showModal: false,
+      showModalIcon: false
     };
   },
   props: {
@@ -53,6 +56,9 @@ export default {
     },
     close() {
       this.showModal = !this.showModal;
+    },
+    changeIcon(){
+      this.showModalIcon = !this.showModalIcon
     },
     // offEditUser() {
     //   const editedUser = {
@@ -84,16 +90,15 @@ export default {
 </script>
 
 <style>
-
 .user:hover {
   background-color: #f9c009;
   cursor: pointer;
   transition-duration: 0.35s;
 }
-.user_selected{
+.user_selected {
   background-color: #f9c009;
 }
-.avatarIcon{
+.avatarIcon {
   max-height: 50px;
   max-width: 50px;
 }

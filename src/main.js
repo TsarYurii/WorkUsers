@@ -5,5 +5,6 @@ import 'bootstrap/dist/css/bootstrap.css'
 import store from './store/store'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+import "dropzone/dist/dropzone.css"
 
 createApp(App).use(store, axios, VueAxios).mount('#app')
