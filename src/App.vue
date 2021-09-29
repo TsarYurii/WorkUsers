@@ -1,46 +1,44 @@
 <template>
-<div>
-  <!-- <users /> -->
-  <drop-zone-no-library @drop.prevent="drop" @change="selectedFile" />
-  <span class="file-info">File: {{ dropzoneFile.name }}</span>
-  <!-- <ModalDropZone/> -->
-  <!-- <DropzoneJs/> -->
+  <div>
+    <!-- <users /> -->
+    <MyDropZone @drop.prevent="drop" @change="selectedFile"/>
   </div>
 </template>
 
 <script>
-// import Users from "./components/Users.vue";
 import { ref } from "vue";
-import DropZoneNoLibrary from "./components/DropZoneNoLibrary.vue";
-// import DropZone from "dropzone-vue";
-// import ModalDropZone from "./components/ModalDropZone.vue"
-// import DropzoneJs from "./components/DropzoneJs.vue"
+import MyDropZone from "./components/MyDropZone.vue";
 export default {
   name: "App",
   components: {
     // Users,
-    DropZoneNoLibrary,
-    // DropZone,
-    // ModalDropZone
-    // DropzoneJs
+    MyDropZone,
   },
   data() {
     return {
-      
+      dataImgSrc: "",
     };
   },
   setup() {
     let dropzoneFile = ref("");
-    let imgSrc = ""
-    const drop = (e) => {
-      dropzoneFile.value = e.dataTransfer.files[0];
-      
+    const drop = (event) => {
+      dropzoneFile.value = event.dataTransfer.files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(dropzoneFile.value);
+      reader.onload = function () {
+        document.querySelector("#imgFromComputator").src = reader.result;
+      };
     };
     const selectedFile = () => {
       dropzoneFile.value = document.querySelector(".dropzoneFile").files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(dropzoneFile.value);
+      reader.onload = function () {
+        document.querySelector("#imgFromComputator").src = reader.result;
+      };
     };
 
-    return { dropzoneFile, drop, selectedFile, imgSrc };
+    return { dropzoneFile, drop, selectedFile };
   },
 };
 </script>
