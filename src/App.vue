@@ -1,44 +1,20 @@
 <template>
   <div>
-    <!-- <users /> -->
-    <MyDropZone @drop.prevent="drop" @change="selectedFile"/>
+    <users />
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
-import MyDropZone from "./components/MyDropZone.vue";
+import Users from "./components/Users.vue"
 export default {
   name: "App",
   components: {
-    // Users,
-    MyDropZone,
+    Users,
   },
   data() {
     return {
       dataImgSrc: "",
     };
-  },
-  setup() {
-    let dropzoneFile = ref("");
-    const drop = (event) => {
-      dropzoneFile.value = event.dataTransfer.files[0];
-      let reader = new FileReader();
-      reader.readAsDataURL(dropzoneFile.value);
-      reader.onload = function () {
-        document.querySelector("#imgFromComputator").src = reader.result;
-      };
-    };
-    const selectedFile = () => {
-      dropzoneFile.value = document.querySelector(".dropzoneFile").files[0];
-      let reader = new FileReader();
-      reader.readAsDataURL(dropzoneFile.value);
-      reader.onload = function () {
-        document.querySelector("#imgFromComputator").src = reader.result;
-      };
-    };
-
-    return { dropzoneFile, drop, selectedFile };
   },
 };
 </script>

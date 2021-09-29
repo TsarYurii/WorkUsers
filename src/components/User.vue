@@ -5,9 +5,7 @@
     @dblclick="onEditUser(), getUserIndex(fake)"
   >
     <td class="align-middle">
-      <div class="me-3" @click="changeIcon"><img class="avatarIcon" src="./avatarIcon.png" alt="SomePicture"/></div>
-      <!-- <DropZone/> -->
-      <Dropzone2 v-if="showModalIcon === true"/>
+      <div class="me-3" @click="changeIcon"><img class="avatarIcon" :src="fake.icon" alt="SomePicture" id="userIcon" :key="fake.id"/></div>
     </td>
     <td class="align-middle">{{ fake.name }}</td>
     <td class="align-middle">{{ fake.email }}</td>
@@ -18,25 +16,29 @@
   <div v-if="showModal === true">
     <FormModal @onSubmitForm="onSubmitForm" @close="close" />
   </div>
+  <div v-if="showModalIcon === true">
+     <MyDropZone @drop.prevent="drop" @change="selectedFile" @changeIcon="changeIcon" @changeUserIcon="changeUserIcon" />
+  </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
-// import DropZone from './DropZone.vue'
 import FormModal from "./FormModal.vue";
-import Dropzone2 from "./Dropzone2.vue";
+import MyDropZone from "./MyDropZone.vue"
+// import { ref } from "vue";
 
 export default {
   name: "User",
   components: {
     FormModal,
-    // DropZone,
-    Dropzone2,
+    MyDropZone,
   },
   data() {
     return {
       showModal: false,
-      showModalIcon: false
+      showModalIcon: false,
+      userIconSrc:"sdsd",
+      dropzoneFile: ""
     };
   },
   props: {
@@ -60,15 +62,6 @@ export default {
     changeIcon(){
       this.showModalIcon = !this.showModalIcon
     },
-    // offEditUser() {
-    //   const editedUser = {
-    //     name: this.name !== "" ? this.name : this.fake.name,
-    //     email: this.email !== "" ? this.email : this.fake.email,
-    //     street: this.street !== "" ? this.street : this.fake.street,
-    //     city: this.city !== "" ? this.city : this.fake.city,
-    //     zip: this.zip !== "" ? this.zip : this.fake.zip,
-    //     id: this.fake.id,
-    //   };
     onSubmitForm(data) {
       const editedUser = {
         name: data.name !== "" ? data.name : this.fake.name,
@@ -77,15 +70,65 @@ export default {
         city: data.city !== "" ? data.city : this.fake.city,
         zip: data.zip !== "" ? data.zip : this.fake.zip,
         id: this.fake.id,
+        icon: this.fake.icon
       };
 
       this.letEditUser(editedUser);
       this.showModal = !this.showModal;
     },
+    changeUserIcon(){
+      document.querySelector("#userIcon").src = this.userIconSrc;
+      this.showModalIcon = !this.showModalIcon
+    },
+
+
+
+    drop(event){
+      this.dropzoneFile = event.dataTransfer.files[0]
+      let reader = new FileReader();
+      console.log(this.userIconSrc)
+      reader.readAsDataURL(this.dropzoneFile)
+      reader.onload = function(){
+        document.querySelector("#imgFromComputator").src = reader.result;
+        this.userIconSrc = reader.result
+      }
+    },
+    selectedFile(){
+      this.dropzoneFile = document.querySelector(".dropzoneFile").files[0]
+      let reader = new FileReader();
+      reader.readAsDataURL(this.dropzoneFile)
+      reader.onload = function(){
+        document.querySelector("#imgFromComputator").src = reader.result;
+        this.userIconSrc = reader.result
+      }
+      
+    }
   },
   computed: {
     ...mapGetters(["getUserIndex"]),
   },
+  // setup() {
+  //   let dropzoneFile = ref("");
+  //   const drop = (event) => {
+  //     dropzoneFile.value = event.dataTransfer.files[0];
+  //     let reader = new FileReader();
+  //     reader.readAsDataURL(dropzoneFile.value);
+  //     reader.onload = function () {
+  //       document.querySelector("#imgFromComputator").src = reader.result;
+  //     };
+  //   };
+  //   const selectedFile = () => {
+  //     dropzoneFile.value = document.querySelector(".dropzoneFile").files[0];
+  //     let reader = new FileReader();
+  //     reader.readAsDataURL(dropzoneFile.value);
+  //     reader.onload = function () {
+  //       document.querySelector("#imgFromComputator").src = reader.result;
+  //       this.userIconSrc = reader.result
+  //     };
+  //   };
+
+  //   // return { dropzoneFile, drop, selectedFile };
+  // },
 };
 </script>
 

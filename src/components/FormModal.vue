@@ -7,7 +7,7 @@
             class="
               simple-modal-header
               d-flex
-              justify-content-between
+              justify-content-center
               align-items-center
             "
           >

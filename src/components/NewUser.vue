@@ -29,6 +29,7 @@ export default {
         city: data.city,
         zip: data.zip,
         id: this.allFilteredData.length + 1,
+        icon: this.allFilteredData[0].icon
       };
       this.addNewUser(newUser);
     },

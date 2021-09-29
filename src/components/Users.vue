@@ -16,6 +16,7 @@
     </div>
     <table class="table table-striped mt-5">
       <!-- TODO: Возможность добавить аватар для пользователя с помощью Dropzone-->
+      <!-- TODO: Изменить скрипт на рефы а не квериСелектор -->
       <thead>
         <tr>
           <th></th>
