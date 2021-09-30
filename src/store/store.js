@@ -21,7 +21,7 @@ export default new Vuex.Store({
             state.isShowModal = !state.isShowModal
         },
         pushNewUser(state, newUser) {
-            state.fakeData.push(newUser)
+            state.fakeData.unshift(newUser)
             state.filteredData = state.fakeData
         },
         updateSearchBy(state) {
@@ -42,6 +42,10 @@ export default new Vuex.Store({
             // console.log(state.filteredData.indexOf(fake))
             // console.log("Mut editedUser: " + JSON.stringify(editedUser))
             // console.log("Mut fake: " + JSON.stringify(fake))
+        },
+        mutEditUserIcon(state, editedUserIcon){
+            state.filteredData.splice(state.fakeIndex, 1, editedUserIcon)
+            state.fakeIndex = null
         }
     },
     getters: {
@@ -119,6 +123,9 @@ export default new Vuex.Store({
         letEditUser(context, editedUser) {
             // console.log("Action fake: " + fake)
             context.commit("mutEditUser", editedUser)
+        },
+        letEditIcon(context, editedUserIcon){
+            context.commit("mutEditUserIcon", editedUserIcon)
         }
     }
 })

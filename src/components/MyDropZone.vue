@@ -29,9 +29,10 @@
                 type="file"
                 id="dropzoneFile"
                 class="dropzoneFile dropzoneInput"
+                accept="image/jpeg, image/png,"
               />
               <div class="previewImage">
-                <img src="" alt="" class="icon" id="imgFromComputator" />
+                <img src="" alt="" class="icon" id="imgFromComputator" ref="previewIcon" />
               </div>
             </div>
             <button class="btn btn-danger me-3 mt-3 pe-3 ps-3" type="button" @click="close">Close</button>
@@ -44,7 +45,6 @@
 </template>
 
 <script>
-// import { ref } from "vue";
 export default {
   name: "MyDropZone",
   data(){

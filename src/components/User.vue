@@ -5,7 +5,14 @@
     @dblclick="onEditUser(), getUserIndex(fake)"
   >
     <td class="align-middle">
-      <div class="me-3" @click="changeIcon"><img class="avatarIcon" :src="fake.icon" alt="SomePicture" id="userIcon" :key="fake.id"/></div>
+      <div class="me-3" @click="changeIcon(), getUserIndex(fake)">
+        <img
+          class="avatarIcon"
+          :src="fake.icon"
+          alt="SomePicture"
+          :key="fake.id"
+        />
+      </div>
     </td>
     <td class="align-middle">{{ fake.name }}</td>
     <td class="align-middle">{{ fake.email }}</td>
@@ -17,14 +24,19 @@
     <FormModal @onSubmitForm="onSubmitForm" @close="close" />
   </div>
   <div v-if="showModalIcon === true">
-     <MyDropZone @drop.prevent="drop" @change="selectedFile" @changeIcon="changeIcon" @changeUserIcon="changeUserIcon" />
+    <MyDropZone
+      @drop.prevent="drop"
+      @change="selectedFile"
+      @changeIcon="changeIcon"
+      @changeUserIcon="changeUserIcon"
+    />
   </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from "vuex";
 import FormModal from "./FormModal.vue";
-import MyDropZone from "./MyDropZone.vue"
+import MyDropZone from "./MyDropZone.vue";
 // import { ref } from "vue";
 
 export default {
@@ -37,8 +49,8 @@ export default {
     return {
       showModal: false,
       showModalIcon: false,
-      userIconSrc:"sdsd",
-      dropzoneFile: ""
+      userIconSrc: "",
+      dropzoneFile: "",
     };
   },
   props: {
@@ -50,17 +62,17 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["letEditUser"]),
+    ...mapActions(["letEditUser", "letEditIcon"]),
     onEditUser() {
-      console.log("Edit this!!!");
-      console.log("onEditUser fake: " + JSON.stringify(this.fake));
+      // console.log("Edit this!!!");
+      // console.log("onEditUser fake: " + JSON.stringify(this.fake));
       this.showModal = !this.showModal;
     },
     close() {
       this.showModal = !this.showModal;
     },
-    changeIcon(){
-      this.showModalIcon = !this.showModalIcon
+    changeIcon() {
+      this.showModalIcon = !this.showModalIcon;
     },
     onSubmitForm(data) {
       const editedUser = {
@@ -70,39 +82,46 @@ export default {
         city: data.city !== "" ? data.city : this.fake.city,
         zip: data.zip !== "" ? data.zip : this.fake.zip,
         id: this.fake.id,
-        icon: this.fake.icon
+        icon: this.fake.icon,
       };
 
       this.letEditUser(editedUser);
       this.showModal = !this.showModal;
     },
-    changeUserIcon(){
-      document.querySelector("#userIcon").src = this.userIconSrc;
-      this.showModalIcon = !this.showModalIcon
-    },
-
-
-
-    drop(event){
-      this.dropzoneFile = event.dataTransfer.files[0]
-      let reader = new FileReader();
-      console.log(this.userIconSrc)
-      reader.readAsDataURL(this.dropzoneFile)
-      reader.onload = function(){
-        document.querySelector("#imgFromComputator").src = reader.result;
-        this.userIconSrc = reader.result
+    changeUserIcon() {
+      this.userIconSrc = document.querySelector("#imgFromComputator").src;
+      const editedUserIcon = {
+        name: this.fake.name,
+        email: this.fake.email,
+        street: this.fake.street,
+        city: this.fake.city,
+        zip: this.fake.zip,
+        id: this.fake.id,
+        icon: this.userIconSrc,
+      };
+      if (this.dropzoneFile != "") {
+        this.letEditIcon(editedUserIcon);
+        this.showModalIcon = !this.showModalIcon;
       }
     },
-    selectedFile(){
-      this.dropzoneFile = document.querySelector(".dropzoneFile").files[0]
+
+    drop(event) {
+      this.dropzoneFile = event.dataTransfer.files[0];
       let reader = new FileReader();
-      reader.readAsDataURL(this.dropzoneFile)
-      reader.onload = function(){
+      console.log(this.userIconSrc);
+      reader.readAsDataURL(this.dropzoneFile);
+      reader.onload = function () {
         document.querySelector("#imgFromComputator").src = reader.result;
-        this.userIconSrc = reader.result
-      }
-      
-    }
+      };
+    },
+    selectedFile() {
+      this.dropzoneFile = document.querySelector(".dropzoneFile").files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(this.dropzoneFile);
+      reader.onload = function () {
+        document.querySelector("#imgFromComputator").src = reader.result;
+      };
+    },
   },
   computed: {
     ...mapGetters(["getUserIndex"]),
