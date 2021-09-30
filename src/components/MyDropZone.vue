@@ -32,11 +32,25 @@
                 accept="image/jpeg, image/png,"
               />
               <div class="previewImage">
-                <img src="" alt="" class="icon" id="imgFromComputator" ref="previewIcon" />
+                <img
+                  src=""
+                  alt=""
+                  class="icon"
+                  id="imgFromComputator"
+                  ref="previewIcon"
+                />
               </div>
             </div>
-            <button class="btn btn-danger me-3 mt-3 pe-3 ps-3" type="button" @click="close">Close</button>
-            <button class="btn btn-primary mt-3" @click="changeUserIcon">Change</button>
+            <button
+              class="btn btn-danger me-3 mt-3 pe-3 ps-3"
+              type="button"
+              @click="close"
+            >
+              Close
+            </button>
+            <button class="btn btn-primary mt-3" @click="changeUserIcon">
+              Change
+            </button>
           </section>
         </div>
       </div>
@@ -47,29 +61,29 @@
 <script>
 export default {
   name: "MyDropZone",
-  data(){
-      return{
-          active: false
-      }
+  data() {
+    return {
+      active: false,
+    };
   },
   methods: {
     close() {
       this.$emit("changeIcon");
     },
-    changeUserIcon(){
-        this.$emit("changeUserIcon")
+    changeUserIcon() {
+      this.$emit("changeUserIcon");
     },
-    toggleActive(){
-        this.active = !this.active
-    }
+    toggleActive() {
+      this.active = !this.active;
+    },
   },
-//   setup() {
-//     const active = ref(false);
-//     const toggleActive = () => {
-//       active.value = !active.value;
-//     };
-//     return { active, toggleActive };
-//   },
+  //   setup() {
+  //     const active = ref(false);
+  //     const toggleActive = () => {
+  //       active.value = !active.value;
+  //     };
+  //     return { active, toggleActive };
+  //   },
 };
 </script>
 

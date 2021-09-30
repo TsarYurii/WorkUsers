@@ -73,6 +73,7 @@ export default {
     },
     changeIcon() {
       this.showModalIcon = !this.showModalIcon;
+      this.dropzoneFile = "";
     },
     onSubmitForm(data) {
       const editedUser = {

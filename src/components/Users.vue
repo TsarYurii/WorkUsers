@@ -15,7 +15,7 @@
       <button class="btn btn-warning" @click="showModal">New user</button>
     </div>
     <table class="table table-striped mt-5">
-      <!-- TODO: Возможность добавить аватар для пользователя с помощью Dropzone-->
+     <!-- TODO: Валидация формы -->
       <!-- TODO: Изменить скрипт на рефы а не квериСелектор -->
       <thead>
         <tr>

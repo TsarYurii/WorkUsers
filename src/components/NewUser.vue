@@ -7,7 +7,7 @@ import { mapActions, mapGetters } from "vuex";
 import FormModal from "./FormModal.vue";
 export default {
   components: {
-    FormModal
+    FormModal,
   },
   // data() {
   //   return {
@@ -29,7 +29,7 @@ export default {
         city: data.city,
         zip: data.zip,
         id: this.allFilteredData.length + 1,
-        icon: this.allFilteredData[0].icon
+        icon: this.allFilteredData[0].icon,
       };
       this.addNewUser(newUser);
     },
@@ -44,5 +44,4 @@ export default {
 </script>
 
 <style>
-
 </style>

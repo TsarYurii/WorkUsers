@@ -43,7 +43,7 @@ export default new Vuex.Store({
             // console.log("Mut editedUser: " + JSON.stringify(editedUser))
             // console.log("Mut fake: " + JSON.stringify(fake))
         },
-        mutEditUserIcon(state, editedUserIcon){
+        mutEditUserIcon(state, editedUserIcon) {
             state.filteredData.splice(state.fakeIndex, 1, editedUserIcon)
             state.fakeIndex = null
         }
@@ -124,7 +124,7 @@ export default new Vuex.Store({
             // console.log("Action fake: " + fake)
             context.commit("mutEditUser", editedUser)
         },
-        letEditIcon(context, editedUserIcon){
+        letEditIcon(context, editedUserIcon) {
             context.commit("mutEditUserIcon", editedUserIcon)
         }
     }

@@ -27,7 +27,7 @@
               <div class="mb-3">
                 <input
                   required
-                  type="text"
+                  type="email"
                   class="form-control"
                   placeholder="Email"
                   v-model="email"
@@ -61,7 +61,13 @@
                 />
               </div>
               <input class="btn btn-primary" type="submit" value="Submit" />
-              <button class="btn btn-danger ms-3 pe-3 ps-3" type="button" @click="close">Close</button>
+              <button
+                class="btn btn-danger ms-3 pe-3 ps-3"
+                type="button"
+                @click="close"
+              >
+                Close
+              </button>
             </form>
           </section>
         </div>
@@ -92,9 +98,9 @@ export default {
         zip: this.zip,
       });
     },
-    close(){
-        this.$emit("close")
-    }
+    close() {
+      this.$emit("close");
+    },
   },
 };
 </script>
