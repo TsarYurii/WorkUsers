@@ -12,7 +12,7 @@
     <div class="mb-3">
       <input
         required
-        type="text"
+        type="email"
         class="form-control"
         placeholder="Email"
         v-model="email"
@@ -46,6 +46,9 @@
       />
     </div>
     <input class="btn btn-primary" type="submit" value="Submit" />
+    <button class="btn btn-danger ms-3 pe-3 ps-3" type="button" @click="close">
+      Close
+    </button>
   </form>
 </template>
 
@@ -64,12 +67,15 @@ export default {
   methods: {
     onSubmitForm() {
       this.$emit("onSubmitForm", {
-        name: this.name,
+        name: this.name.charAt(0).toUpperCase() + this.name.slice(1),
         email: this.email,
-        street: this.street,
-        city: this.city,
+        street: this.street.charAt(0).toUpperCase() + this.street.slice(1),
+        city: this.city.charAt(0).toUpperCase() + this.city.slice(1),
         zip: this.zip,
       });
+    },
+    close() {
+      this.$emit("close");
     },
   },
 };

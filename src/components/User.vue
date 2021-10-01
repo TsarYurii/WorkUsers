@@ -21,7 +21,7 @@
     <td class="align-middle">{{ fake.zip }}</td>
   </tr>
   <div v-if="showModal === true">
-    <FormModal @onSubmitForm="onSubmitForm" @close="close" />
+    <FormModal @onSubmitForm="onSubmitForm" @close="close" :fake="fake" />
   </div>
   <div v-if="showModalIcon === true">
     <MyDropZone

@@ -16,47 +16,52 @@
           <section class="simple-modal-body">
             <form @submit.prevent="onSubmitForm">
               <div class="mb-3">
+                <span>Name</span>
                 <input
                   required
                   type="text"
                   class="form-control"
-                  placeholder="Name"
+                  :placeholder="[this.fake ? this.fake.name : '']"
                   v-model="name"
                 />
               </div>
               <div class="mb-3">
+                <span>Email</span>
                 <input
                   required
                   type="email"
                   class="form-control"
-                  placeholder="Email"
+                  :placeholder="[this.fake ? this.fake.email : '']"
                   v-model="email"
                 />
               </div>
               <div class="mb-3">
+                <span>Street</span>
                 <input
                   required
                   type="text"
                   class="form-control"
-                  placeholder="Street"
+                  :placeholder="[this.fake ? this.fake.street : '']"
                   v-model="street"
                 />
               </div>
               <div class="mb-3">
+                <span>City</span>
                 <input
                   required
                   type="text"
                   class="form-control"
-                  placeholder="City"
+                  :placeholder="[this.fake ? this.fake.city : '']"
                   v-model="city"
                 />
               </div>
               <div class="mb-3">
+                <span>Zip</span>
                 <input
                   required
                   type="text"
                   class="form-control"
-                  placeholder="Zip"
+                  :placeholder="[this.fake ? this.fake.zip : '']"
                   v-model="zip"
                 />
               </div>
@@ -79,6 +84,14 @@
 <script>
 export default {
   name: "FormModal",
+  props: {
+    fake: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+  },
   data() {
     return {
       name: "",
@@ -91,10 +104,10 @@ export default {
   methods: {
     onSubmitForm() {
       this.$emit("onSubmitForm", {
-        name: this.name,
+        name: this.name.charAt(0).toUpperCase() + this.name.slice(1),
         email: this.email,
-        street: this.street,
-        city: this.city,
+        street: this.street.charAt(0).toUpperCase() + this.street.slice(1),
+        city: this.city.charAt(0).toUpperCase() + this.city.slice(1),
         zip: this.zip,
       });
     },
