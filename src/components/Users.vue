@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between container">
       <div>
         <input
           class="p-1 me-1"
