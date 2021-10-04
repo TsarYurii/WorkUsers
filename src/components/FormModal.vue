@@ -18,7 +18,7 @@
               <div class="mb-3">
                 <span>Name</span>
                 <input
-                  required
+                  
                   type="text"
                   class="form-control"
                   :placeholder="[this.fake ? this.fake.name : '']"
@@ -28,7 +28,7 @@
               <div class="mb-3">
                 <span>Email</span>
                 <input
-                  required
+                  
                   type="email"
                   class="form-control"
                   :placeholder="[this.fake ? this.fake.email : '']"
@@ -38,7 +38,7 @@
               <div class="mb-3">
                 <span>Street</span>
                 <input
-                  required
+                  
                   type="text"
                   class="form-control"
                   :placeholder="[this.fake ? this.fake.street : '']"
@@ -48,7 +48,7 @@
               <div class="mb-3">
                 <span>City</span>
                 <input
-                  required
+                  
                   type="text"
                   class="form-control"
                   :placeholder="[this.fake ? this.fake.city : '']"
@@ -58,7 +58,7 @@
               <div class="mb-3">
                 <span>Zip</span>
                 <input
-                  required
+                  
                   type="text"
                   class="form-control"
                   :placeholder="[this.fake ? this.fake.zip : '']"
@@ -103,6 +103,7 @@ export default {
   },
   methods: {
     onSubmitForm() {
+
       this.$emit("onSubmitForm", {
         name: this.name.charAt(0).toUpperCase() + this.name.slice(1),
         email: this.email,
