@@ -42,7 +42,7 @@ export default {
         email: data.email,
         street: data.street,
         city: data.city,
-        zip: data.zip,
+        zip: data.zip,  
         id: this.allFilteredData.length + 1,
         icon: this.allFilteredData[0].icon,
       };
