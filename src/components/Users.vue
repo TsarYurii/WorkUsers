@@ -15,8 +15,8 @@
       <button class="btn btn-warning" @click="showModal">New user</button>
     </div>
     <table class="table table-striped mt-5">
-     <!-- TODO: Валидация формы -->
       <!-- TODO: Изменить скрипт на рефы а не квериСелектор -->
+      <!-- TODO: Добавить анимации (модальное окно, остальное по возможности и желанию) -->
       <thead>
         <tr>
           <th></th>

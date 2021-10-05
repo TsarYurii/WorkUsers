@@ -15,7 +15,6 @@
           </header>
           <section class="simple-modal-body">
             <Form
-              :initial-values="initialValues"
               :validation-schema="formValidationSchema"
               @submit="onSubmitForm"
             >
@@ -26,6 +25,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Your name"
+                  v-model="name"
                 />
                 <ErrorMessage class="btn" name="name" />
               </div>
@@ -108,50 +108,45 @@ export default {
   },
   data() {
     const formValidationSchema = {
-      name(name) {
-        if(name !== ""){
-        return true
-      }
-      return "YOU MUST WRITE YOUR NAME, BOY!!!"
+      name(value) {
+        if (typeof value === "string" && value !== "") {
+          return true;
+        }
+        return "YOU MUST WRITE YOUR NAME, BOY!!!";
       },
       email(value) {
-        let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        if(value !== "" && re.test(value)){
-        return true
-      }
-      return "YOU MUST WRITE YOUR EMAIL, BOY!!!"
+        let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (typeof value === "string" && re.test(value)) {
+          return true;
+        }
+        return "YOU MUST WRITE YOUR EMAIL, BOY!!!";
       },
       street(value) {
-        if(value !== ""){
-        return true
-      }
-      return "YOU MUST WRITE YOUR STREET, BOY!!!"
+        if (value !== "") {
+          return true;
+        }
+        return "YOU MUST WRITE YOUR STREET, BOY!!!";
       },
       city(value) {
-        if(value !== ""){
-        return true
-      }
-      return "YOU MUST WRITE YOUR CITY, BOY!!!"
+        if (typeof value === "string" && value !== "") {
+          return true;
+        }
+        return "YOU MUST WRITE YOUR CITY, BOY!!!";
       },
       zip(value) {
-        if(value !== ""){
-        return true
-      }
-      return "YOU MUST WRITE YOUR ZIP, BOY!!!"
+        if (typeof value === "string" && value !== "") {
+          return true;
+        }
+        return "YOU MUST WRITE YOUR ZIP, BOY!!!";
       },
     };
     return {
-      name: this.fake ? this.fake.name : "",
-      email: this.fake ? this.fake.email : "",
-      street: this.fake ? this.fake.street : "",
-      city: this.fake ? this.fake.city : "",
-      zip: this.fake ? this.fake.zip : "",
+      name: this.fake.name ? this.fake.name : "",
+      email: this.fake.email ? this.fake.email : "",
+      street: this.fake.street ? this.fake.street : "",
+      city: this.fake.city ? this.fake.city : "",
+      zip: this.fake.zip ? this.fake.zip : "",
       formValidationSchema,
-      initialValues:{
-        name: this.name,
-        email: this.email,
-        street: this.street
-      }
     };
   },
   methods: {
