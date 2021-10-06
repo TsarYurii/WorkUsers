@@ -62,10 +62,14 @@
         </tr>
       </thead>
       <tbody>
-        <User v-for="fake in getPaginatedUsers" :key="fake.id" :fake="fake" />
+        <transition-group name="list">
+          <User v-for="fake in getPaginatedUsers" :key="fake.id" :fake="fake" />
+        </transition-group>
       </tbody>
     </table>
+    <transition name="fade">
     <NewUser v-if="changedShowModal === true" />
+    </transition>
     <Pagination />
   </div>
 </template>
@@ -133,4 +137,28 @@ export default {
 </script>
 
 <style>
+.list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.list-enter-active,
+.list-leave-active {
+  transition: all 1s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  /* transform: translateY(30px); */
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

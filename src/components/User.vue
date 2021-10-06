@@ -1,35 +1,41 @@
 <template>
-  <tr
-    class="user"
-    :class="{ user_selected: showModal === true }"
-    @dblclick="onEditUser(), getUserIndex(fake)"
-  >
-    <td class="align-middle">
-      <div class="me-3" @click="changeIcon(), getUserIndex(fake)">
-        <img
-          class="avatarIcon"
-          :src="fake.icon"
-          alt="SomePicture"
-          :key="fake.id"
+  <div>
+    <tr
+      class="user"
+      :class="{ user_selected: showModal === true }"
+      @dblclick="onEditUser(), getUserIndex(fake)"
+    >
+      <td class="align-middle">
+        <div class="me-3" @click="changeIcon(), getUserIndex(fake)">
+          <img
+            class="avatarIcon"
+            :src="fake.icon"
+            alt="SomePicture"
+            :key="fake.id"
+          />
+        </div>
+      </td>
+      <td class="align-middle">{{ fake.name }}</td>
+      <td class="align-middle">{{ fake.email }}</td>
+      <td class="align-middle">{{ fake.street }}</td>
+      <td class="align-middle">{{ fake.city }}</td>
+      <td class="align-middle">{{ fake.zip }}</td>
+    </tr>
+    <transition name="fade">
+      <div v-if="showModal === true">
+        <FormModal @onSubmitForm="onSubmitForm" @close="close" :fake="fake" />
+      </div>
+    </transition>
+    <transition name="fade">
+      <div v-if="showModalIcon === true">
+        <MyDropZone
+          @drop.prevent="drop"
+          @change="selectedFile"
+          @changeIcon="changeIcon"
+          @changeUserIcon="changeUserIcon"
         />
       </div>
-    </td>
-    <td class="align-middle">{{ fake.name }}</td>
-    <td class="align-middle">{{ fake.email }}</td>
-    <td class="align-middle">{{ fake.street }}</td>
-    <td class="align-middle">{{ fake.city }}</td>
-    <td class="align-middle">{{ fake.zip }}</td>
-  </tr>
-  <div v-if="showModal === true">
-    <FormModal @onSubmitForm="onSubmitForm" @close="close" :fake="fake" />
-  </div>
-  <div v-if="showModalIcon === true">
-    <MyDropZone
-      @drop.prevent="drop"
-      @change="selectedFile"
-      @changeIcon="changeIcon"
-      @changeUserIcon="changeUserIcon"
-    />
+    </transition>
   </div>
 </template>
 
@@ -164,5 +170,16 @@ export default {
 .avatarIcon {
   max-height: 50px;
   max-width: 50px;
+}
+
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
