@@ -1,26 +1,25 @@
 <template>
-  <div>
-    <tr
-      class="user"
-      :class="{ user_selected: showModal === true }"
-      @dblclick="onEditUser(), getUserIndex(fake)"
-    >
-      <td class="align-middle">
-        <div class="me-3" @click="changeIcon(), getUserIndex(fake)">
-          <img
-            class="avatarIcon"
-            :src="fake.icon"
-            alt="SomePicture"
-            :key="fake.id"
-          />
-        </div>
-      </td>
-      <td class="align-middle">{{ fake.name }}</td>
-      <td class="align-middle">{{ fake.email }}</td>
-      <td class="align-middle">{{ fake.street }}</td>
-      <td class="align-middle">{{ fake.city }}</td>
-      <td class="align-middle">{{ fake.zip }}</td>
-    </tr>
+  <tr
+    class="user"
+    :class="{ user_selected: showModal === true }"
+    @dblclick="onEditUser(), getUserIndex(fake)"
+  >
+    <td class="align-middle">
+      <div class="me-3" @click="changeIcon(), getUserIndex(fake)">
+        <img
+          class="avatarIcon"
+          :src="fake.icon"
+          alt="SomePicture"
+          :key="fake.id"
+        />
+      </div>
+    </td>
+    <td class="align-middle">{{ fake.name }}</td>
+    <td class="align-middle">{{ fake.email }}</td>
+    <td class="align-middle">{{ fake.street }}</td>
+    <td class="align-middle">{{ fake.city }}</td>
+    <td class="align-middle">{{ fake.zip }}</td>
+    <!-- </tr> -->
     <transition name="fade">
       <div v-if="showModal === true">
         <FormModal @onSubmitForm="onSubmitForm" @close="close" :fake="fake" />
@@ -36,7 +35,7 @@
         />
       </div>
     </transition>
-  </div>
+  </tr>
 </template>
 
 <script>
@@ -171,7 +170,6 @@ export default {
   max-height: 50px;
   max-width: 50px;
 }
-
 
 .fade-enter-active,
 .fade-leave-active {

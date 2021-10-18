@@ -61,14 +61,19 @@
           <th>Zip</th>
         </tr>
       </thead>
-      <tbody>
-        <transition-group name="list">
+      <tbody class="minH670">
+        <transition-group
+          name="list"
+          enter-active-class="animate__animated animate__zoomIn"
+          leave-active-class="animate__animated animate__zoomOut"
+          mode="out-in"
+        >
           <User v-for="fake in getPaginatedUsers" :key="fake.id" :fake="fake" />
         </transition-group>
       </tbody>
     </table>
     <transition name="fade">
-    <NewUser v-if="changedShowModal === true" />
+      <NewUser v-if="changedShowModal === true" />
     </transition>
     <Pagination />
   </div>
@@ -135,30 +140,8 @@ export default {
   },
 };
 </script>
-
 <style>
-.list-item {
-  display: inline-block;
-  margin-right: 10px;
-}
-.list-enter-active,
-.list-leave-active {
-  transition: all 1s ease;
-}
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  /* transform: translateY(30px); */
-}
-
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
+  .list-move{
+    transition: transform 1s
+  }
 </style>
