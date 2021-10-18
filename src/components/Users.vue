@@ -17,6 +17,7 @@
     <table class="table table-striped mt-5">
       <!-- TODO: Изменить скрипт на рефы а не квериСелектор -->
       <!-- TODO: Добавить анимации (модальное окно, остальное по возможности и желанию) -->
+      <!-- TODO: Добавить локализацию -->
       <thead>
         <tr>
           <th></th>
@@ -61,16 +62,17 @@
           <th>Zip</th>
         </tr>
       </thead>
-      <tbody class="minH670">
-        <transition-group
-          name="list"
-          enter-active-class="animate__animated animate__zoomIn"
-          leave-active-class="animate__animated animate__zoomOut"
-          mode="out-in"
-        >
-          <User v-for="fake in getPaginatedUsers" :key="fake.id" :fake="fake" />
-        </transition-group>
-      </tbody>
+      <!-- <tbody> -->
+      <transition-group
+        mode="out-in"
+        tag="tbody"
+        name="list"
+        enter-active-class="animate__animated animate__zoomIn"
+        leave-active-class="animate__animated animate__zoomOut"
+      >
+        <User v-for="fake in getPaginatedUsers" :key="fake.id" :fake="fake" />
+      </transition-group>
+      <!-- </tbody> -->
     </table>
     <transition name="fade">
       <NewUser v-if="changedShowModal === true" />
@@ -141,7 +143,7 @@ export default {
 };
 </script>
 <style>
-  .list-move{
-    transition: transform 1s
-  }
+.list-move {
+  transition: transform 1s ease-out;
+}
 </style>
