@@ -12,7 +12,7 @@
           {{ searchBy }}
         </button>
       </div>
-      <button class="btn btn-warning" @click="showModal">{{$t('topPanel.newUserBtn')}}</button>
+      <button class="btn btn-warning" @click="showModal">{{t('topPanel.newUserBtn')}}</button>
       <LocaleSwitcher/>
     </div>
     <table class="table table-striped mt-5">

@@ -7,4 +7,5 @@ import VueAxios from 'vue-axios'
 import "animate.css"
 import i18n from './i18n'
 
+
 createApp(App).use(store, axios, VueAxios, i18n).mount('#app')
