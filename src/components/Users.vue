@@ -12,7 +12,8 @@
           {{ searchBy }}
         </button>
       </div>
-      <button class="btn btn-warning" @click="showModal">New user</button>
+      <button class="btn btn-warning" @click="showModal">{{$t('topPanel.newUserBtn')}}</button>
+      <LocaleSwitcher/>
     </div>
     <table class="table table-striped mt-5">
       <!-- TODO: Изменить скрипт на рефы а не квериСелектор -->
@@ -85,12 +86,15 @@
 import User from "./User.vue";
 import NewUser from "./NewUser.vue";
 import Pagination from "./Pagination.vue";
+import LocaleSwitcher from "./LocaleSwitcher.vue"
 import { mapGetters, mapActions } from "vuex";
+
 export default {
   components: {
     User,
     NewUser,
     Pagination,
+    LocaleSwitcher
   },
   data() {
     return {
@@ -147,3 +151,16 @@ export default {
   transition: transform 1s ease-out;
 }
 </style>
+
+<i18n>
+{
+  "en": {
+    "topPanel": {
+    "search": "Search",
+    "seachByName": "by Name",
+    "searchByEmail": "by Email",
+    "newUserBtn": "New user"
+  }
+  }
+}
+</i18n>

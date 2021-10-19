@@ -1,0 +1,8 @@
+{
+    "topPanel": {
+        "search": "Поиск",
+        "seachByName": "по Имени",
+        "searchByEmail": "по Почте",
+        "newUserBtn": "Новый пользователь"
+    }
+}

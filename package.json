@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\""
   },
   "dependencies": {
     "animate.css": "^4.1.1",
@@ -17,12 +18,14 @@
     "vee-validate": "^4.5.2",
     "vue": "^3.0.0",
     "vue-axios": "^3.3.6",
+    "vue-i18n": "^9.2.0-beta.13",
     "vue2-dropzone": "^3.6.0",
     "vue3-dropzone": "0.0.7",
     "vuex": "^4.0.2",
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@intlify/vue-i18n-loader": "^3.0.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
@@ -30,6 +33,7 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
+    "vue-cli-plugin-i18n": "~2.3.1",
     "vue-cli-plugin-vuetify": "~2.4.2"
   },
   "eslintConfig": {

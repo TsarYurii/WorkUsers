@@ -1,0 +1,8 @@
+{
+  "topPanel": {
+    "search": "Search",
+    "seachByName": "by Name",
+    "searchByEmail": "by Email",
+    "newUserBtn": "New user"
+  }
+}
