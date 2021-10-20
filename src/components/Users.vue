@@ -64,11 +64,11 @@
       </thead>
       <!-- <tbody> -->
       <transition-group
-        mode="out-in"
+        
         tag="tbody"
         name="list"
-        enter-active-class="animate__animated animate__zoomIn"
-        leave-active-class="animate__animated animate__zoomOut"
+        enter-active-class="animate__animated animate__slideInRight animate__fast"
+        leave-active-class="animate__animated animate__slideOutLeft animate__fast"
       >
         <User v-for="fake in getPaginatedUsers" :key="fake.id" :fake="fake" />
       </transition-group>
@@ -148,6 +148,9 @@ export default {
 </script>
 <style>
 .list-move {
-  transition: transform 1s ease-out;
+  transition: transform 0.8s;
 }
+/* tbody{
+  position: relative;
+} */
 </style>

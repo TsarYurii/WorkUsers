@@ -166,6 +166,9 @@ export default {
 .user_selected {
   background-color: #f9c009;
 }
+/* .user{
+  position: absolute
+} */
 .avatarIcon {
   max-height: 50px;
   max-width: 50px;
