@@ -8,4 +8,4 @@ import "animate.css"
 import i18n from './i18n'
 
 
-createApp(App).use(store, axios, VueAxios, i18n).mount('#app')
+createApp(App).use(i18n).use(store, axios, VueAxios).mount('#app')

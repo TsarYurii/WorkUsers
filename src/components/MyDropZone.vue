@@ -11,9 +11,9 @@
               align-items-center
             "
           >
-            <span>Change icon</span>
+            <span>{{$t('topPanel.dropZoneTitle')}}</span>
           </header>
-          <section class="simple-modal-body">
+          <section class="simple-modal-body center">
             <div
               @dragenter.prevent="toggleActive"
               @dragleave.prevent="toggleActive"
@@ -22,9 +22,7 @@
               :class="{ 'active-dropzone': active === true }"
               class="dropzone"
             >
-              <span>Drag or Drop File</span>
-              <span>OR</span>
-              <label for="dropzoneFile">Select File</label>
+              <label for="dropzoneFile">{{$t('topPanel.btnSelectFile')}}</label>
               <input
                 type="file"
                 id="dropzoneFile"
@@ -46,10 +44,10 @@
               type="button"
               @click="close"
             >
-              Close
+              {{$t('topPanel.btnClose')}}
             </button>
             <button class="btn btn-primary mt-3" @click="changeUserIcon">
-              Change
+              {{$t('topPanel.btnOk')}}
             </button>
           </section>
         </div>
@@ -93,10 +91,10 @@ export default {
   max-height: 200px;
 }
 .dropzone {
-  /* width: 400px;
-  height: 200px; */
+  width: 100%;
+  height: 200px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   row-gap: 16px;
@@ -170,5 +168,11 @@ export default {
   justify-content: center;
   height: 80px;
   text-align: center;
+}
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 </style>

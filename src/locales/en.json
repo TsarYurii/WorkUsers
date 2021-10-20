@@ -1,8 +1,17 @@
 {
   "topPanel": {
     "search": "Search",
-    "seachByName": "by Name",
+    "searchByName": "by Name",
     "searchByEmail": "by Email",
-    "newUserBtn": "New user"
+    "newUserBtn": "New user",
+    "userListName": "Name",
+    "userListEmail": "Email",
+    "userListStreet": "Street",
+    "userListCity": "City",
+    "modalTitle": "Create or edit user",
+    "dropZoneTitle": "Change icon",
+    "btnClose": "Close",
+    "btnOk": "OK",
+    "btnSelectFile": "Select File"
   }
 }

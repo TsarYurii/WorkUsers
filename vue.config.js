@@ -4,9 +4,10 @@ module.exports = {
       locale: 'en',
       fallbackLocale: 'ru',
       localeDir: 'locales',
-      enableLegacy: false,
+      enableLegacy: true,
       runtimeOnly: false,
-      compositionOnly: false,
+      compositionOnly: true,
+      globalInjection: true,
       fullInstall: true
     }
   }

@@ -38,10 +38,6 @@ export default new Vuex.Store({
         mutEditUser(state, editedUser) {
             state.filteredData.splice(state.fakeIndex, 1, editedUser)
             state.fakeIndex = null
-
-            // console.log(state.filteredData.indexOf(fake))
-            // console.log("Mut editedUser: " + JSON.stringify(editedUser))
-            // console.log("Mut fake: " + JSON.stringify(fake))
         },
         mutEditUserIcon(state, editedUserIcon) {
             state.filteredData.splice(state.fakeIndex, 1, editedUserIcon)

@@ -1,8 +1,12 @@
 <template>
-    <ul>
-        <li v-for="locale in locales" :key="locale" @click="switchLocale(locale)">
+    <ul class="list-group list-group-horizontal">
+        <button class="list-group-item list-group-item-action" v-for="locale in locales" :key="locale" @click="switchLocale(locale)"
+            :class="{
+                'list-group-item-warning' : this.$i18n.locale === locale,
+            }"
+        >
             {{locale}}
-        </li>
+        </button>
     </ul>
 </template>
 
@@ -20,7 +24,7 @@ export default {
                 this.$i18n.locale = locale;
             }
             console.log(locale)
-            console.log(this.locales)
+            // console.log(this.locales)
         }
     }
 }

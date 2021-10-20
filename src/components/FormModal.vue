@@ -11,7 +11,7 @@
               align-items-center
             "
           >
-            <span>Create or edit user</span>
+            <span>{{$t('topPanel.modalTitle')}}</span>
           </header>
           <section class="simple-modal-body">
             <Form
@@ -19,45 +19,45 @@
               @submit="onSubmitForm"
             >
               <div class="mb-3">
-                <span>Name</span>
+                <span>{{$t('topPanel.userListName')}}</span>
                 <Field
                   name="name"
                   type="text"
                   class="form-control"
-                  placeholder="Your name"
+                  :placeholder="$t('topPanel.userListName')"
                   v-model="name"
                 />
                 <ErrorMessage class="btn" name="name" />
               </div>
               <div class="mb-3">
-                <span>Email</span>
+                <span>{{$t('topPanel.userListEmail')}}</span>
                 <Field
                   name="email"
                   type="email"
                   class="form-control"
-                  placeholder="Your email"
+                  :placeholder="$t('topPanel.userListEmail')"
                   v-model="email"
                 />
                 <ErrorMessage name="email" />
               </div>
               <div class="mb-3">
-                <span>Street</span>
+                <span>{{$t('topPanel.userListStreet')}}</span>
                 <Field
                   name="street"
                   type="text"
                   class="form-control"
-                  placeholder="Your street"
+                  :placeholder="$t('topPanel.userListStreet')"
                   v-model="street"
                 />
                 <ErrorMessage name="street" />
               </div>
               <div class="mb-3">
-                <span>City</span>
+                <span>{{$t('topPanel.userListCity')}}</span>
                 <Field
                   name="city"
                   type="text"
                   class="form-control"
-                  placeholder="Your city"
+                  :placeholder="$t('topPanel.userListCity')"
                   v-model="city"
                 />
                 <ErrorMessage name="city" />
@@ -68,7 +68,7 @@
                   name="zip"
                   type="text"
                   class="form-control"
-                  placeholder="Your zip"
+                  placeholder="Zip"
                   v-model="zip"
                 />
                 <ErrorMessage name="zip" />

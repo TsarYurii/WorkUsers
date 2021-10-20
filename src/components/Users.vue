@@ -5,14 +5,13 @@
         <input
           class="p-1 me-1"
           type="text"
-          placeholder="Search"
+          :placeholder="$t('topPanel.search')"
           @input="getUsersFilter($event.target.value)"
         />
-        <button class="btn btn-warning" @click="changeSearchBy">
-          {{ searchBy }}
+        <button class="btn btn-warning" @click="changeSearchBy" v-text="(searchBy === 'by Name' ? $t('topPanel.searchByName') : $t('topPanel.searchByEmail'))">
         </button>
       </div>
-      <button class="btn btn-warning" @click="showModal">{{t('topPanel.newUserBtn')}}</button>
+      <button class="btn btn-warning" @click="showModal">{{$t('topPanel.newUserBtn')}}</button>
       <LocaleSwitcher/>
     </div>
     <table class="table table-striped mt-5">
@@ -24,7 +23,7 @@
           <th></th>
           <th>
             <button class="btn fw-bold" @click="onSortByName">
-              Name
+              {{$t('topPanel.userListName')}}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -40,11 +39,11 @@
               </svg>
             </button>
           </th>
-          <th>Email</th>
-          <th>Street</th>
+          <th>{{$t('topPanel.userListEmail')}}</th>
+          <th>{{$t('topPanel.userListStreet')}}</th>
           <th>
             <button class="btn fw-bold" @click="onSortByCity">
-              City
+              {{$t('topPanel.userListCity')}}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -141,6 +140,7 @@ export default {
       }
     },
   },
+  
   async mounted() {
     this.fetchFakeData();
   },
@@ -151,16 +151,3 @@ export default {
   transition: transform 1s ease-out;
 }
 </style>
-
-<i18n>
-{
-  "en": {
-    "topPanel": {
-    "search": "Search",
-    "seachByName": "by Name",
-    "searchByEmail": "by Email",
-    "newUserBtn": "New user"
-  }
-  }
-}
-</i18n>
