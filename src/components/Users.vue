@@ -59,9 +59,7 @@
           <th>Zip</th>
         </tr>
       </thead>
-      <!-- <tbody> -->
       <transition-group
-        
         tag="tbody"
         name="list"
         enter-active-class="animate__animated animate__slideInRight animate__fast"
@@ -69,7 +67,6 @@
       >
         <User v-for="fake in getPaginatedUsers" :key="fake.id" :fake="fake" />
       </transition-group>
-      <!-- </tbody> -->
     </table>
     <transition name="fade">
       <NewUser v-if="changedShowModal === true" />
@@ -147,7 +144,4 @@ export default {
 .list-move {
   transition: transform 0.8s;
 }
-/* tbody{
-  position: relative;
-} */
 </style>

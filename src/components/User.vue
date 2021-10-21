@@ -67,8 +67,6 @@ export default {
   methods: {
     ...mapActions(["letEditUser", "letEditIcon"]),
     onEditUser() {
-      // console.log("Edit this!!!");
-      // console.log("onEditUser fake: " + JSON.stringify(this.fake));
       this.showModal = !this.showModal;
     },
     close() {
@@ -129,29 +127,7 @@ export default {
   },
   computed: {
     ...mapGetters(["getUserIndex"]),
-  },
-  // setup() {
-  //   let dropzoneFile = ref("");
-  //   const drop = (event) => {
-  //     dropzoneFile.value = event.dataTransfer.files[0];
-  //     let reader = new FileReader();
-  //     reader.readAsDataURL(dropzoneFile.value);
-  //     reader.onload = function () {
-  //       document.querySelector("#imgFromComputator").src = reader.result;
-  //     };
-  //   };
-  //   const selectedFile = () => {
-  //     dropzoneFile.value = document.querySelector(".dropzoneFile").files[0];
-  //     let reader = new FileReader();
-  //     reader.readAsDataURL(dropzoneFile.value);
-  //     reader.onload = function () {
-  //       document.querySelector("#imgFromComputator").src = reader.result;
-  //       this.userIconSrc = reader.result
-  //     };
-  //   };
-
-  //   // return { dropzoneFile, drop, selectedFile };
-  // },
+  }
 };
 </script>
 
@@ -164,9 +140,6 @@ export default {
 .user_selected {
   background-color: #f9c009;
 }
-/* .user{
-  position: absolute
-} */
 .avatarIcon {
   max-height: 50px;
   max-width: 50px;

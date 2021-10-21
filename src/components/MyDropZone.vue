@@ -74,14 +74,7 @@ export default {
     toggleActive() {
       this.active = !this.active;
     },
-  },
-  //   setup() {
-  //     const active = ref(false);
-  //     const toggleActive = () => {
-  //       active.value = !active.value;
-  //     };
-  //     return { active, toggleActive };
-  //   },
+  }
 };
 </script>
 

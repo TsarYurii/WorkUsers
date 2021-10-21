@@ -9,30 +9,10 @@ export default {
   components: {
     FormModal,
   },
-  // data() {
-  //   return {
-  //     name: "",
-  //     email: "",
-  //     street: "",
-  //     city: "",
-  //     zip: "",
-  //   };
-  // },
   name: "NewUser",
   methods: {
     ...mapActions(["showModal", "addNewUser"]),
     onSubmitForm(data) {
-      // if (data.name === "") {
-      //   alert("Name");
-      // } else if (data.email === "") {
-      //   alert("Email");
-      // } else if (data.street === "") {
-      //   alert("Street");
-      // } else if (data.city === "") {
-      //   alert("City");
-      // } else if (data.zip === "") {
-      //   alert("Zip");
-      // } else { }
         const newUser = {
           name: data.name,
           email: data.email,
