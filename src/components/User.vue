@@ -19,7 +19,6 @@
     <td class="align-middle">{{ fake.street }}</td>
     <td class="align-middle">{{ fake.city }}</td>
     <td class="align-middle">{{ fake.zip }}</td>
-    <!-- </tr> -->
     <transition name="fade">
       <div v-if="showModal === true">
         <FormModal @onSubmitForm="onSubmitForm" @close="close" :fake="fake" />
@@ -42,7 +41,6 @@
 import { mapActions, mapGetters } from "vuex";
 import FormModal from "./FormModal.vue";
 import MyDropZone from "./MyDropZone.vue";
-// import { ref } from "vue";
 
 export default {
   name: "User",
