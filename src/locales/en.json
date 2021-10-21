@@ -3,7 +3,7 @@
     "search": "Search",
     "searchByName": "by Name",
     "searchByEmail": "by Email",
-    "newUserBtn": "New user",
+    "newUserBtn": "Add new user",
     "userListName": "Name",
     "userListEmail": "Email",
     "userListStreet": "Street",
@@ -11,7 +11,7 @@
     "modalTitle": "Create or edit user",
     "dropZoneTitle": "Change icon",
     "btnClose": "Close",
-    "btnOk": "OK",
+    "btnSbm": "Submit",
     "btnSelectFile": "Select File"
   }
 }

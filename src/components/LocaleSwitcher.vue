@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { setLocale } from '@vee-validate/i18n';
 export default {
     name: "LocaleSwitcher",
     data(){
@@ -22,9 +23,9 @@ export default {
         switchLocale(locale){
             if (this.$i18n.locale !== locale){
                 this.$i18n.locale = locale;
+                setLocale(this.$i18n.locale)
+                console.log(this.locales)
             }
-            // console.log(locale)
-            // console.log(this.locales)
         }
     }
 }

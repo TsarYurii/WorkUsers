@@ -11,7 +11,7 @@
         "modalTitle": "Создать или изменить пользователя",
         "dropZoneTitle": "Изменить иконку",
         "btnClose": "Закрыть",
-        "btnOk": "OK",
+        "btnSbm": "Отправить",
         "btnSelectFile": "Выбрать Файл"
     }
 }

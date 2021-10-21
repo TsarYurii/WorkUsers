@@ -11,15 +11,12 @@
               align-items-center
             "
           >
-            <span>{{$t('topPanel.modalTitle')}}</span>
+            <span>{{ $t("topPanel.modalTitle") }}</span>
           </header>
           <section class="simple-modal-body">
-            <Form
-              :validation-schema="formValidationSchema"
-              @submit="onSubmitForm"
-            >
+            <Form :validation-schema="formSchema" @submit="onSubmitForm">
               <div class="mb-3">
-                <span>{{$t('topPanel.userListName')}}</span>
+                <span>{{ $t("topPanel.userListName") }}</span>
                 <Field
                   name="name"
                   type="text"
@@ -27,10 +24,10 @@
                   :placeholder="$t('topPanel.userListName')"
                   v-model="name"
                 />
-                <ErrorMessage class="btn" name="name" />
+                <ErrorMessage name="name" />
               </div>
               <div class="mb-3">
-                <span>{{$t('topPanel.userListEmail')}}</span>
+                <span>{{ $t("topPanel.userListEmail") }}</span>
                 <Field
                   name="email"
                   type="email"
@@ -41,7 +38,7 @@
                 <ErrorMessage name="email" />
               </div>
               <div class="mb-3">
-                <span>{{$t('topPanel.userListStreet')}}</span>
+                <span>{{ $t("topPanel.userListStreet") }}</span>
                 <Field
                   name="street"
                   type="text"
@@ -52,7 +49,7 @@
                 <ErrorMessage name="street" />
               </div>
               <div class="mb-3">
-                <span>{{$t('topPanel.userListCity')}}</span>
+                <span>{{ $t("topPanel.userListCity") }}</span>
                 <Field
                   name="city"
                   type="text"
@@ -73,13 +70,13 @@
                 />
                 <ErrorMessage name="zip" />
               </div>
-              <input class="btn btn-primary" type="submit" value="Submit" />
+              <input class="btn btn-primary" type="submit" :value="$t('topPanel.btnSbm')" />
               <button
                 class="btn btn-danger ms-3 pe-3 ps-3"
                 type="button"
                 @click="close"
               >
-                Close
+                {{$t('topPanel.btnClose')}}
               </button>
             </Form>
           </section>
@@ -107,38 +104,44 @@ export default {
     },
   },
   data() {
-    const formValidationSchema = {
-      name(value) {
-        if (typeof value === "string" && value !== "") {
-          return true;
-        }
-        return "YOU MUST WRITE YOUR NAME, BOY!!!";
-      },
-      email(value) {
-        let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (typeof value === "string" && re.test(value)) {
-          return true;
-        }
-        return "YOU MUST WRITE YOUR EMAIL, BOY!!!";
-      },
-      street(value) {
-        if (value !== "") {
-          return true;
-        }
-        return "YOU MUST WRITE YOUR STREET, BOY!!!";
-      },
-      city(value) {
-        if (typeof value === "string" && value !== "") {
-          return true;
-        }
-        return "YOU MUST WRITE YOUR CITY, BOY!!!";
-      },
-      zip(value) {
-        if (typeof value === "string" && value !== "") {
-          return true;
-        }
-        return "YOU MUST WRITE YOUR ZIP, BOY!!!";
-      },
+    // const formValidationSchema = {
+    //   name(value) {
+    //     if (typeof value === "string" && value !== "") {
+    //       return true;
+    //     }
+    //   },
+    //   email(value) {
+    //     let re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //     if (typeof value === "string" && re.test(value)) {
+    //       return true;
+    //     }
+    //     return "YOU MUST WRITE YOUR EMAIL, BOY!!!";
+    //   },
+    //   street(value) {
+    //     if (value !== "") {
+    //       return true;
+    //     }
+    //     return "YOU MUST WRITE YOUR STREET, BOY!!!";
+    //   },
+    //   city(value) {
+    //     if (typeof value === "string" && value !== "") {
+    //       return true;
+    //     }
+    //     return "YOU MUST WRITE YOUR CITY, BOY!!!";
+    //   },
+    //   zip(value) {
+    //     if (typeof value === "string" && value !== "") {
+    //       return true;
+    //     }
+    //     return "YOU MUST WRITE YOUR ZIP, BOY!!!";
+    //   },
+    // };
+    const formSchema = {
+      name: "name",
+      email: "email",
+      street: "street",
+      city: "city",
+      zip: "zip",
     };
     return {
       name: this.fake.name ? this.fake.name : "",
@@ -146,7 +149,7 @@ export default {
       street: this.fake.street ? this.fake.street : "",
       city: this.fake.city ? this.fake.city : "",
       zip: this.fake.zip ? this.fake.zip : "",
-      formValidationSchema,
+      formSchema,
     };
   },
   methods: {
@@ -162,36 +165,6 @@ export default {
     close() {
       this.$emit("close");
     },
-    // nameRules(){
-    //   if(this.name !== ""){
-    //     return true
-    //   }
-    //   return "YOU MUST WRITE YOUR NAME, BOY!!!"
-    // },
-    // emailRules(){
-    //   if(this.email !== ""){
-    //     return true
-    //   }
-    //   return "YOU MUST WRITE YOUR EMAIL!!!"
-    // },
-    // streetRules(){
-    //   if(this.street !== ""){
-    //     return true
-    //   }
-    //   return "YOU MUST WRITE YOUR STREET!!!"
-    // },
-    // cityRules(){
-    //   if(this.city !== ""){
-    //     return true
-    //   }
-    //   return "YOU MUST WRITE YOUR CITY!!!"
-    // },
-    // zipRules(){
-    //   if(this.zip !== ""){
-    //     return true
-    //   }
-    //   return "YOU MUST WRITE YOUR ZIP!!!"
-    // }
   },
 };
 </script>

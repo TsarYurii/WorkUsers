@@ -1,0 +1,17 @@
+{
+    "topPanel": {
+        "search": "Szukanie",
+        "searchByName": "według Imię",
+        "searchByEmail": "według Poczta",
+        "newUserBtn": "Nowy użytkownik",
+        "userListName": "Imię",
+        "userListEmail": "Poczta",
+        "userListStreet": "Ulica",
+        "userListCity": "Miasto",
+        "modalTitle": "Utwórz lub zmień użytkownika",
+        "dropZoneTitle": "Zmień ikonę",
+        "btnClose": "Zamknij",
+        "btnSbm": "Wysłać",
+        "btnSelectFile": "Wybierz plik"
+    }
+}

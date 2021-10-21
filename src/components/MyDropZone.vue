@@ -47,7 +47,7 @@
               {{$t('topPanel.btnClose')}}
             </button>
             <button class="btn btn-primary mt-3" @click="changeUserIcon">
-              {{$t('topPanel.btnOk')}}
+              {{$t('topPanel.btnSbm')}}
             </button>
           </section>
         </div>

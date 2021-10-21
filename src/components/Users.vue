@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="d-flex justify-content-between container">
+    <div class="d-flex justify-content-between">
       <div>
         <input
           class="p-1 me-1"
@@ -14,7 +14,7 @@
       <button class="btn btn-warning" @click="showModal">{{$t('topPanel.newUserBtn')}}</button>
       <LocaleSwitcher/>
     </div>
-    <table class="table table-striped mt-5">
+    <table class="table table-striped mt-4">
       <thead>
         <tr>
           <th></th>
