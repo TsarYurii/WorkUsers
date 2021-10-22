@@ -12,6 +12,14 @@ import { defineRule, configure } from 'vee-validate'
 import { localize } from '@vee-validate/i18n'
 
 
+import config from './config.yml' 
+// import config from './config'       // extension can be omitted
+console.log(config)                 // { "apiKey": "abcd" }
+ 
+import { apiKey } from '@/config'   // Using @ alias for src
+console.log(apiKey)                 // "abcd"
+
+
 configure({
     generateMessage: localize({
         en: {

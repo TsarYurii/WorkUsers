@@ -1,0 +1,15 @@
+
+topPanel:
+  search: Search
+  searchByName: by Name
+  searchByEmail: by Email
+  newUserBtn: Add new user
+  userListName: Name
+  userListEmail: Email
+  userListStreet: Street
+  userListCity: City
+  modalTitle: Create or edit user
+  dropZoneTitle: Change icon
+  btnClose: Close
+  btnSbm: Submit
+  btnSelectFile: Select File

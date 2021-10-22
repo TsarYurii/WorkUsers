@@ -24,6 +24,7 @@
     "vue3-dropzone": "0.0.7",
     "vue3-i18n": "^1.1.4",
     "vuex": "^4.0.2",
+    "yaml-loader": "^0.6.0",
     "yup": "^0.32.9"
   },
   "devDependencies": {
@@ -35,7 +36,10 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0",
-    "vue-cli-plugin-i18n": "~2.3.1"
+    "vue-cli-plugin-i18n": "~2.3.1",
+    "vue-cli-plugin-yaml": "^1.0.2",
+    "vue-cli-plugin-yaml-loader": "~1.0.0",
+    "webpack": "^4.46.0"
   },
   "eslintConfig": {
     "root": true,

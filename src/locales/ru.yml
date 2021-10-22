@@ -1,0 +1,14 @@
+topPanel:
+  search: Поиск
+  searchByName: по Имени
+  searchByEmail: по Почте
+  newUserBtn: Новый пользователь
+  userListName: Имя
+  userListEmail: Эл. почта
+  userListStreet: Улица
+  userListCity: Город
+  modalTitle: Создать или изменить пользователя
+  dropZoneTitle: Изменить иконку
+  btnClose: Закрыть
+  btnSbm: Отправить
+  btnSelectFile: Выбрать Файл

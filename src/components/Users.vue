@@ -8,11 +8,20 @@
           :placeholder="$t('topPanel.search')"
           @input="getUsersFilter($event.target.value)"
         />
-        <button class="btn btn-warning" @click="changeSearchBy" v-text="(searchBy === 'by Name' ? $t('topPanel.searchByName') : $t('topPanel.searchByEmail'))">
-        </button>
+        <button
+          class="btn btn-warning"
+          @click="changeSearchBy"
+          v-text="
+            searchBy === 'by Name'
+              ? $t('topPanel.searchByName')
+              : $t('topPanel.searchByEmail')
+          "
+        ></button>
       </div>
-      <button class="btn btn-warning" @click="showModal">{{$t('topPanel.newUserBtn')}}</button>
-      <LocaleSwitcher/>
+      <button class="btn btn-warning" @click="showModal">
+        {{ $t("topPanel.newUserBtn") }}
+      </button>
+      <LocaleSwitcher />
     </div>
     <table class="table table-striped mt-4">
       <thead>
@@ -20,7 +29,7 @@
           <th></th>
           <th>
             <button class="btn fw-bold" @click="onSortByName">
-              {{$t('topPanel.userListName')}}
+              {{ $t("topPanel.userListName") }}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -36,11 +45,11 @@
               </svg>
             </button>
           </th>
-          <th>{{$t('topPanel.userListEmail')}}</th>
-          <th>{{$t('topPanel.userListStreet')}}</th>
+          <th>{{ $t("topPanel.userListEmail") }}</th>
+          <th>{{ $t("topPanel.userListStreet") }}</th>
           <th>
             <button class="btn fw-bold" @click="onSortByCity">
-              {{$t('topPanel.userListCity')}}
+              {{ $t("topPanel.userListCity") }}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -60,6 +69,7 @@
         </tr>
       </thead>
       <transition-group
+        mode="in-out"
         tag="tbody"
         name="list"
         enter-active-class="animate__animated animate__slideInRight animate__fast"
@@ -79,7 +89,7 @@
 import User from "./User.vue";
 import NewUser from "./NewUser.vue";
 import Pagination from "./Pagination.vue";
-import LocaleSwitcher from "./LocaleSwitcher.vue"
+import LocaleSwitcher from "./LocaleSwitcher.vue";
 import { mapGetters, mapActions } from "vuex";
 
 export default {
@@ -87,7 +97,7 @@ export default {
     User,
     NewUser,
     Pagination,
-    LocaleSwitcher
+    LocaleSwitcher,
   },
   data() {
     return {
@@ -134,7 +144,7 @@ export default {
       }
     },
   },
-  
+
   async mounted() {
     this.fetchFakeData();
   },
@@ -142,6 +152,6 @@ export default {
 </script>
 <style>
 .list-move {
-  transition: transform 0.8s;
+  transition: transform 0.8s ease;
 }
 </style>
